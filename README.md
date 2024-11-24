@@ -1,4 +1,4 @@
-Set the initial configuration for the terminal, neovim and tmux in a linux environment.
+Set the initial configuration for the terminal, neovim and tmux in a linux environment. All the configurations are (tiny) modifications of the amazing tutorials of [typecraft](https://www.youtube.com/@typecraft_dev).
 
 It should install/set:
 - [ncourse](https://ftp.gnu.org/gnu/ncurses/)
