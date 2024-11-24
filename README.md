@@ -1,14 +1,14 @@
 Set the initial configuration for the terminal, neovim and tmux in a linux environment.
 
 It should install/set:
-- ncourse
-- zsh
-- nerd fonts/Hack
-- oh my zsh
-- powerlevel10k
-- zsh syntax highlighting
-- zsh auto-suggestion
-- NeoVim
+- [ncourse](https://ftp.gnu.org/gnu/ncurses/)
+- [zsh](https://sourceforge.net/projects/zsh/)
+- [nerd fonts/Hack](https://www.nerdfonts.com/font-downloads)
+- [oh my zsh](https://github.com/ohmyzsh/ohmyzsh)
+- [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- [zsh syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [zsh auto-suggestion](https://github.com/zsh-users/zsh-autosuggestions)
+- [NeoVim](https://github.com/neovim/neovim)
 
 Together with many plugins for nvim.
 
