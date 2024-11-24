@@ -1,4 +1,5 @@
 Set the initial configuration for the terminal, neovim, and tmux in a Linux environment.
+
 All the configurations are (tiny) modifications of the AMAZING tutorials of [typecraft](https://www.youtube.com/@typecraft_dev).
 
 It should install/set:
