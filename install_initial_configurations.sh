@@ -117,6 +117,7 @@ fi
 
 # Install oh my zsh
 {
+    rm -rf ~/.oh-my-zsh
     sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 } && echo -e "\n\n\n oh my zsh installed! \n\n\n" || {
     echo "An error ocurred while trying to install oh my zsh!"
@@ -154,11 +155,7 @@ sed -i 's|plugins=(git)|plugins=(git zsh-syntax-highlighting  zsh-autosuggestion
     exit 1
 }
 
-# Source the new rc files (at this point you will configure your zsh terminal) 
-{
-    source ~/.bashrc
-    source ~/.zshrc
-} && echo -e "bashrc and zshrc sourced!" || {
-    echo "An error ocurred while trying to source bashrc and zshrc!"
-    exit 1
-}
+# Start zsh and configure it
+$HOME/.local/bin/zsh
+
+echo -e "\n\n\n ALL DONE! \n\n\n"
