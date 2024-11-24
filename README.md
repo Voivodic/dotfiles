@@ -10,4 +10,9 @@ It should install/set:
 - zsh auto-suggestion
 - NeoVim
 
-Together with many plugins for nvim. 
+Together with many plugins for nvim.
+
+To install just run:
+'''bash install_initial_configurations.sh'''
+
+Select the options prefered, when asked, and type 'exit' after the 'oh my zsh' configuration and after the 'powerlevel10k' configuration.
