@@ -28,6 +28,13 @@ then
     exit 1
 fi
 
+# Check if gcc is installed
+if ! command -v gcc &> /dev/null
+then
+    echo "gcc is not installed. Please, install it to proceed."
+    exit 1
+fi
+
 # Download and extract ncurses source code
 wget https://ftp.gnu.org/gnu/ncurses/ncurses-6.3.tar.gz
 tar -xzf ncurses-6.3.tar.gz
