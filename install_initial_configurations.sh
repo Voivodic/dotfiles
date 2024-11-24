@@ -21,6 +21,13 @@ then
     exit 1
 fi
 
+# Check if unzip is installed
+if ! command -v unzip &> /dev/null
+then
+    echo "unzip is not installed. Please, install it to processd."
+    exit 1
+fi
+
 # Check if make is installed
 if ! command -v make &> /dev/null
 then
@@ -59,7 +66,6 @@ fi
         echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
         echo 'export CFLAGS="-I$HOME/.local/include"' >> ~/.bashrc
         echo 'export LDFLAGS="-L$HOME/.local/lib"' >> ~/.bashrc
-        source ~/.bashrc
     }
 } && echo -e "\n\n\n ncurses installed! \n\n\n"
 
@@ -78,11 +84,41 @@ fi
     } && {
         # Add Zsh to PATH and set it as the default shell
         echo 'exec $HOME/.local/bin/zsh -l' >> ~/.bashrc
-        source ~/.bashrc
     }
 } && echo -e "\n\n\n zsh installed! \n\n\n"
+
+# Install the nerd fonts
+{
+    mkdir -p ~/.local/share/fonts
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
+    unzip Hack.zip
+    mv Hack/* ~/.local/share/fonts/
+} && echo -e "\n\n\n nerd fonts installed! \n\n\n"
 
 # Install oh my zsh
 {
     sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 } && echo -e "\n\n\n oh my zsh installed! \n\n\n"
+
+# Install powerlevel10k
+{
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    sed -i 's|ZSH_THEME="robbyrussell"|ZSH_THEME="powerlevel10k/powerlevel10k"|' ~/.zshrc
+} && echo -e "\n\n\n powerlevel10k installed! \n\n\n"
+
+# Install zsh syntax highlighting
+{
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+} && echo -e "\n\n\n zsh syntax highlighting installed! \n\n\n"
+
+# Install zsh auto-suggestion
+{
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+} && echo -e "\n\n\n zsh autosuggestions installed! \n\n\n"
+
+# Update the plugins on zshrc
+sed -i 's|plugins=(git)|plugins=(git zsh-syntax-highlighting  zsh-autosuggestions)|' ~/.zshrc && echo -e "\n\n\n plugings updatted! \n\n\n"
+
+# Source the new rc files 
+source ~/.bashrc
+source ~/.zshrc
