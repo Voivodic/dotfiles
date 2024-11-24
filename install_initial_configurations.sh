@@ -42,6 +42,7 @@ then
     exit 1
 fi
 
+# ncurses
 {
     {
         # Download and extract ncurses source code
@@ -67,11 +68,15 @@ fi
         echo 'export CFLAGS="-I$HOME/.local/include"' >> ~/.bashrc
         echo 'export LDFLAGS="-L$HOME/.local/lib"' >> ~/.bashrc
     }
-} && echo -e "\n\n\n ncurses installed! \n\n\n" || {
+} && {
+    rm -r ncurses*
+    echo -e "\n\n\n ncurses installed! \n\n\n" 
+} || {
     echo "An error ocurred while trying to install ncurses!"
     exit 1
 }
 
+# zsh
 {
     {
         # Download and extract Zsh source code
@@ -88,7 +93,10 @@ fi
         # Add Zsh to PATH and set it as the default shell
         echo 'exec $HOME/.local/bin/zsh -l' >> ~/.bashrc
     }
-} && echo -e "\n\n\n zsh installed! \n\n\n" || {
+} && {
+    rm -r zsh*
+    echo -e "\n\n\n zsh installed! \n\n\n" 
+} || {  
     echo "An error ocurred while trying to install zsh!"
     exit 1
 }
@@ -98,8 +106,11 @@ fi
     mkdir -p ~/.local/share/fonts
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
     unzip Hack.zip
-    mv Hack/* ~/.local/share/fonts/
-} && echo -e "\n\n\n nerd fonts installed! \n\n\n" || {
+    mv HackNerdFont-Regular.ttf ~/.local/share/fonts/
+} && {
+    rm -r Hack*
+    echo -e "\n\n\n nerd fonts installed! \n\n\n" 
+} || {  
     echo "An error ocurred while trying to install nerd fonts!"
     exit 1
 }
