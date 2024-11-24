@@ -67,7 +67,10 @@ fi
         echo 'export CFLAGS="-I$HOME/.local/include"' >> ~/.bashrc
         echo 'export LDFLAGS="-L$HOME/.local/lib"' >> ~/.bashrc
     }
-} && echo -e "\n\n\n ncurses installed! \n\n\n"
+} && echo -e "\n\n\n ncurses installed! \n\n\n" || {
+    echo "An error ocurred while trying to install ncurses!"
+    exit 1
+}
 
 {
     {
@@ -85,7 +88,10 @@ fi
         # Add Zsh to PATH and set it as the default shell
         echo 'exec $HOME/.local/bin/zsh -l' >> ~/.bashrc
     }
-} && echo -e "\n\n\n zsh installed! \n\n\n"
+} && echo -e "\n\n\n zsh installed! \n\n\n" || {
+    echo "An error ocurred while trying to install zsh!"
+    exit 1
+}
 
 # Install the nerd fonts
 {
@@ -93,32 +99,55 @@ fi
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
     unzip Hack.zip
     mv Hack/* ~/.local/share/fonts/
-} && echo -e "\n\n\n nerd fonts installed! \n\n\n"
+} && echo -e "\n\n\n nerd fonts installed! \n\n\n" || {
+    echo "An error ocurred while trying to install nerd fonts!"
+    exit 1
+}
 
 # Install oh my zsh
 {
     sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-} && echo -e "\n\n\n oh my zsh installed! \n\n\n"
+} && echo -e "\n\n\n oh my zsh installed! \n\n\n" || {
+    echo "An error ocurred while trying to install oh my zsh!"
+    exit 1
+}
 
 # Install powerlevel10k
 {
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sed -i 's|ZSH_THEME="robbyrussell"|ZSH_THEME="powerlevel10k/powerlevel10k"|' ~/.zshrc
-} && echo -e "\n\n\n powerlevel10k installed! \n\n\n"
+} && echo -e "\n\n\n powerlevel10k installed! \n\n\n" || {
+    echo "An error ocurred while trying to install powerlevel10k!"
+    exit 1
+}
 
 # Install zsh syntax highlighting
 {
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-} && echo -e "\n\n\n zsh syntax highlighting installed! \n\n\n"
+} && echo -e "\n\n\n zsh syntax highlighting installed! \n\n\n" || {
+    echo "An error ocurred while trying to install zsh syntax highlighting!"
+    exit 1
+}
 
 # Install zsh auto-suggestion
 {
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-} && echo -e "\n\n\n zsh autosuggestions installed! \n\n\n"
+} && echo -e "\n\n\n zsh autosuggestions installed! \n\n\n" || {
+    echo "An error ocurred while trying to install zsh auto-suggestion!"
+    exit 1
+}
 
 # Update the plugins on zshrc
-sed -i 's|plugins=(git)|plugins=(git zsh-syntax-highlighting  zsh-autosuggestions)|' ~/.zshrc && echo -e "\n\n\n plugings updatted! \n\n\n"
+sed -i 's|plugins=(git)|plugins=(git zsh-syntax-highlighting  zsh-autosuggestions)|' ~/.zshrc && echo -e "\n\n\n plugings updatted! \n\n\n" || {
+    echo "An error ocurred while trying to update the plugins on .zshrc!"
+    exit 1
+}
 
-# Source the new rc files 
-source ~/.bashrc
-source ~/.zshrc
+# Source the new rc files (at this point you will configure your zsh terminal) 
+{
+    source ~/.bashrc
+    source ~/.zshrc
+} && echo -e "bashrc and zshrc sourced!" || {
+    echo "An error ocurred while trying to source bashrc and zshrc!"
+    exit 1
+}
