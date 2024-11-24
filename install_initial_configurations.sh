@@ -156,6 +156,30 @@ sed -i 's|plugins=(git)|plugins=(git zsh-syntax-highlighting  zsh-autosuggestion
 }
 
 # Start zsh and configure it
-$HOME/.local/bin/zsh
+~/.local/bin/zsh
+
+# Install neovim
+{
+    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+    tar -xzf nvim-linux64.tar.gz
+    mv nvim-linux64 ~/.local/nvim
+    rm nvim-linux64.tar.gz
+    echo 'export PATH=$HOME/.local/nvim/bin:$PATH' >> ~/.zshrc
+    source ~/.zshrc
+} && echo -e "\n\n\n Neovim installed! \n\n\n" || {
+    echo "An error ocurred while trying to install neovim!"
+    exit 1
+}
+
+# Configure Neovim
+{
+    tar -zxvf nvim_config.tar.gz -C ~/
+} && {
+    echo -e "\n\n\n Neovim configured! \n\n\n" 
+    nvim
+    } || {
+    echo "An error ocurred while trying to configure Neovim!"
+    exit 1
+}
 
 echo -e "\n\n\n ALL DONE! \n\n\n"
