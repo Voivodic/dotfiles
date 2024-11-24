@@ -49,6 +49,12 @@ fi
         cd ..
     } && {
         # Update environment variables
+        export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+        export PATH=$HOME/.local/bin:$PATH
+        export CFLAGS=-I$HOME/.local/include
+        export LDFLAGS=-L$HOME/.local/lib
+
+        # Update .bashrc
         echo 'export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
         echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
         echo 'export CFLAGS="-I$HOME/.local/include"' >> ~/.bashrc
