@@ -81,3 +81,8 @@ fi
         source ~/.bashrc
     }
 } && echo -e "\n\n\n zsh installed! \n\n\n"
+
+# Install oh my zsh
+{
+    sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+} && echo -e "\n\n\n oh my zsh installed! \n\n\n"
