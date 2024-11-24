@@ -13,6 +13,6 @@ It should install/set:
 Together with many plugins for nvim.
 
 To install just run:
-'''bash install_initial_configurations.sh'''
+```bash install_initial_configurations.sh```
 
-Select the options prefered, when asked, and type 'exit' after the 'oh my zsh' configuration and after the 'powerlevel10k' configuration.
+Select the options prefered, when asked, and type "exit" after the "oh my zsh" configuration and after the "powerlevel10k" configuration.
