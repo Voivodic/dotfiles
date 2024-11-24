@@ -21,6 +21,13 @@ then
     exit 1
 fi
 
+# Check if make is installed
+if ! command -v make &> /dev/null
+then
+    echo "make is not installed. Please, install it to procced."
+    exit 1
+fi
+
 # Download and extract ncurses source code
 wget https://ftp.gnu.org/gnu/ncurses/ncurses-6.3.tar.gz
 tar -xzf ncurses-6.3.tar.gz
