@@ -1,11 +1,26 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
-# Replace the '❯' symbol in the prompt with '➜'
+# Format the symbols
 [character] 
 success_symbol = '[➜](bold green)' 
 error_symbol = '[✗](bold red)'
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
+# Format the directories path
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+truncation_symbol = '.../'
+
+# Format conda information
+[conda]
+format = '[$symbol$environment](dimmed green) '
+
+# Format git information
+[git_branch]
+symbol = "🌱 "
+style = "bold purple"
+truncation_length = 10
+truncation_symbol = '.../'
+ignore_branches = []
+
