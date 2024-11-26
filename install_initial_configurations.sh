@@ -84,7 +84,7 @@ done
 # Configure tmux
 {
     tar -zxvf tmux_config.tar.gz -C ~/
-    mv ~/.tmux/.tmux.config ~/
+    mv ~/.tmux/.tmux.conf ~/
 } && echo -e "\n tmux configured! \n" || {
     echo "An error ocurred while trying to configure tmux!"
     exit 1
