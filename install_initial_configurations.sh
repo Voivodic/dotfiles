@@ -1,39 +1,10 @@
 #!/bin/bash
-
-# Check if git is installed
-if ! command -v git &> /dev/null
-then
-    echo "git is not installed. Please, install it to proceed."
-    exit 1
-fi
-
-# Check if wget is installed
-if ! command -v wget &> /dev/null
-then
-    echo "wget is not installed. Please, install it to procced."
-    exit 1
-fi
-
-# Check if tar is installed
-if ! command -v tar &> /dev/null
-then
-    echo "tar is not installed. Please, install it to procced."
-    exit 1
-fi
-
-# Check if unzip is installed
-if ! command -v unzip &> /dev/null
-then
-    echo "unzip is not installed. Please, install it to processd."
-    exit 1
-fi
-
-# Check if gcc is installed
-if ! command -v gcc &> /dev/null
-then
-    echo "gcc is not installed. Please, install it to proceed."
-    exit 1
-fi
+# Check the needed libraries
+for pkg in wget git ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen; do
+    if ! dpkg -s $pkg >/dev/null 2>&1; then
+         echo "$pkg is not installed."
+    fi
+done
 
 # Download and set (Hack) nerdfonts
 {
@@ -71,29 +42,29 @@ fi
 }
 
 # Install neovim
-#{
-#    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-#    tar -xzf nvim-linux64.tar.gz
-#    mv nvim-linux64 ~/.local/nvim
-#    rm nvim-linux64.tar.gz
-#    if ! grep -qF 'export PATH=$HOME/.local/nvim/bin:$PATH' ~/.bashrc; then
-#        echo 'export PATH=$HOME/.local/nvim/bin:$PATH' >> ~/.bashrc
-#    fi
-#    source ~/.bashrc
-#} && echo -e "\n\n\n Neovim installed! \n\n\n" || {
-#    echo "An error ocurred while trying to install neovim!"
-#    exit 1
-#}
+{
+    git clone https://github.com/neovim/neovim
+    cd neovim/
+    make CMAKE_BUILD_TYPE=Release
+    make install
+    if ! grep -qF 'export PATH=$HOME/Libraries/Initial_cofigurations/neovim/:$PATH' ~/.bashrc; then
+        echo 'export PATH=$HOME/Libraries/Initial_configurarions/nvim/bin:$PATH' >> ~/.bashrc
+    fi
+    source ~/.bashrc
+} && echo -e "\n\n\n Neovim installed! \n\n\n" || {
+    echo "An error ocurred while trying to install neovim!"
+    exit 1
+}
 
 # Configure Neovim
-#{
-#    tar -zxvf nvim_config.tar.gz -C ~/
-#} && {
-#    echo -e "\n\n\n Neovim configured! \n\n\n" 
-#    nvim
-#    } || {
-#    echo "An error ocurred while trying to configure Neovim!"
-#    exit 1
-#}
+{
+    tar -zxvf nvim_config.tar.gz -C ~/
+} && {
+    echo -e "\n\n\n Neovim configured! \n\n\n" 
+    nvim
+    } || {
+    echo "An error ocurred while trying to configure Neovim!"
+    exit 1
+}
 
 echo -e "\n\n\n ALL DONE! \n\n\n"
