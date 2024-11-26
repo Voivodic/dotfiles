@@ -32,3 +32,9 @@ threshold = -1
 symbol = '🔥'
 style = 'bold dimmed green'
 format = "$symbol [${ram}]($style) "
+
+# Format the command durantion
+[cmd_duration]
+min_time = 1_000
+show_milliseconds = true
+format = "took [$duration]($style)"
