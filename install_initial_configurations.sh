@@ -1,6 +1,6 @@
 #!/bin/bash
 # Check the needed libraries
-for pkg in wget git ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen; do
+for pkg in wget git ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen libevent-dev ncurses-dev build-essential bison pkg-config; do
     if ! dpkg -s $pkg >/dev/null 2>&1; then
          echo "$pkg is not installed."
     fi
@@ -14,7 +14,7 @@ done
     mv *.ttf ~/.local/share/fonts/
     fc-cache -f -v
     rm Hack.zip
-} && echo -e "\n\n\n Nerdfonts installed! \n\n\n" || {
+} && echo -e "\n Nerdfonts installed! \n" || {
     echo "An error ocurred while trying to install nerdfonts!"
     exit 1
 }
@@ -27,7 +27,7 @@ done
         echo 'eval "$(starship init bash)"' >> ~/.bashrc
     fi
     rm install.sh
-} && echo -e "\n\n\n Starship installed! \n\n\n" || {
+} && echo -e "\n Starship installed! \n" || {
     echo "An error ocurred while trying to install starship!"
     exit 1
 }
@@ -36,7 +36,7 @@ done
 {
     mkdir -p ~/.config/
     cp starship.toml ~/.config/
-} && echo -e "\n\n\n Starship configured! \n\n\n" || {
+} && echo -e "\n Starship configured! \n" || {
     echo "An error ocurred while configuring starship!"
     exit 1
 }
@@ -52,7 +52,7 @@ done
     fi
     source ~/.bashrc
     cd ..
-} && echo -e "\n\n\n Neovim installed! \n\n\n" || {
+} && echo -e "\n Neovim installed! \n" || {
     echo "An error ocurred while trying to install neovim!"
     exit 1
 }
@@ -61,10 +61,32 @@ done
 {
     tar -zxvf nvim_config.tar.gz -C ~/
 } && {
-    echo -e "\n\n\n Neovim configured! \n\n\n" 
+    echo -e "\n Neovim configured! \n" 
     nvim
     } || {
     echo "An error ocurred while trying to configure Neovim!"
+    exit 1
+}
+
+# Install tmux
+{
+    git clone https://github.com/tmux/tmux.git
+    cd tmux
+    sh autogen.sh
+    ./configure
+    make && sudo make install
+    cd ..
+} && echo -e "\n tmux installed! \n" || {
+    echo "An error ocurred while trying to install tmux!"
+    exit 1
+}
+
+# Configure tmux
+{
+    tar -zxvf tmux_config.tar.gz -C ~/
+    mv ~/.tmux/.tmux.config ~/
+} && echo -e "\n tmux configured! \n" || {
+    echo "An error ocurred while trying to configure tmux!"
     exit 1
 }
 
