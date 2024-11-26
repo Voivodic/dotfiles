@@ -3,13 +3,7 @@ Set the initial configuration for the terminal, neovim, and tmux in a Linux envi
 All the configurations are (tiny) modifications of the configurations presented in the AMAZING tutorials of [typecraft](https://www.youtube.com/@typecraft_dev).
 
 It should install/set:
-- [ncourse](https://ftp.gnu.org/gnu/ncurses/)
-- [zsh](https://sourceforge.net/projects/zsh/)
-- [nerd fonts/Hack](https://www.nerdfonts.com/font-downloads)
-- [oh my zsh](https://github.com/ohmyzsh/ohmyzsh)
-- [powerlevel10k](https://github.com/romkatv/powerlevel10k)
-- [zsh syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-- [zsh auto-suggestion](https://github.com/zsh-users/zsh-autosuggestions)
+- [starship](https://starship.rs)
 - [NeoVim](https://github.com/neovim/neovim)
 
 Together with many plugins for nvim.
