@@ -23,6 +23,7 @@ style = "bold purple"
 truncation_length = 10
 truncation_symbol = '.../'
 ignore_branches = []
+format = "[$symbol$branch(:$remote_branch)]($style)"
 
 # Format the memory usage
 [memory_usage]
