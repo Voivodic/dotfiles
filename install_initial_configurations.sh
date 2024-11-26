@@ -51,6 +51,7 @@ done
         echo 'export PATH=$HOME/Libraries/Initial_configurarions/nvim/bin:$PATH' >> ~/.bashrc
     fi
     source ~/.bashrc
+    cd ..
 } && echo -e "\n\n\n Neovim installed! \n\n\n" || {
     echo "An error ocurred while trying to install neovim!"
     exit 1
