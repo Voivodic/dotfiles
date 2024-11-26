@@ -61,6 +61,14 @@ fi
     exit 1
 }
 
+# Set the starship configurations
+{
+    mkdir -p ~/.config/
+    cp starship.toml ~/.config/
+} && echo -e "\n\n\n Starship configured! \n\n\n" || {
+    echo "An error ocurred while configuring starship!"
+    exit 1
+}
 
 # Install neovim
 #{
