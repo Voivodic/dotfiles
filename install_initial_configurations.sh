@@ -48,6 +48,7 @@ done
     make CMAKE_BUILD_TYPE=Release
     make install
     cd ..
+    rm -rf neovim/
 } && echo -e "\n Neovim installed! \n" || {
     echo "An error ocurred while trying to install neovim!"
     exit 1
@@ -73,6 +74,7 @@ done
     make && sudo make install
     cp tmux /usr/local/bin/
     cd ..
+    rm -rf tmux/
 } && echo -e "\n tmux installed! \n" || {
     echo "An error ocurred while trying to install tmux!"
     exit 1
