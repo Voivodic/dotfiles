@@ -22,7 +22,7 @@ done
 
 # Download and set starship for the terminal configuration
 {
-    wget -q https://starship.rs/install.sh | sh
+    wget -sS https://starship.rs/install.sh | sh
     if ! grep -qF 'eval "$(starship init bash)"' ~/.bashrc; then
         echo 'eval "$(starship init bash)"' >> ~/.bashrc
     fi
@@ -47,10 +47,6 @@ done
     cd neovim/
     make CMAKE_BUILD_TYPE=Release
     make install
-    if ! grep -qF 'export PATH=$HOME/Libraries/Initial_cofigurations/neovim/:$PATH' ~/.bashrc; then
-        echo 'export PATH=$HOME/Libraries/Initial_configurarions/nvim/bin:$PATH' >> ~/.bashrc
-    fi
-    source ~/.bashrc
     cd ..
 } && echo -e "\n Neovim installed! \n" || {
     echo "An error ocurred while trying to install neovim!"
@@ -75,6 +71,7 @@ done
     sh autogen.sh
     ./configure
     make && sudo make install
+    cp tmux /usr/local/bin/
     cd ..
 } && echo -e "\n tmux installed! \n" || {
     echo "An error ocurred while trying to install tmux!"
@@ -89,5 +86,8 @@ done
     echo "An error ocurred while trying to configure tmux!"
     exit 1
 }
+
+# Start starship
+source ~/.bashrc
 
 echo -e "\n\n\n ALL DONE! \n\n\n"
