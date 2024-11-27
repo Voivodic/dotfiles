@@ -5,8 +5,9 @@ All the configurations are (tiny) modifications of the configurations presented 
 It should install/set:
 - [Starship](https://starship.rs)
 - [NeoVim](https://github.com/neovim/neovim)
+- [Tmux](https://github.com/tmux/tmux)
 
-Together with many plugins for nvim.
+Together with many plugins for nvim and tmux.
 
 To install everything just run:
 
