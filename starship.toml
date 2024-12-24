@@ -15,6 +15,7 @@ truncation_symbol = '.../'
 
 # Format conda information
 [conda]
+symbol = "🪱 "
 format = '[$symbol$environment](dimmed green) '
 
 # Format git information
