@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if some basic libraries are installed
-for pkg in wget git tar; do
+for pkg in wget curl git tar; do
     if ! dpkg -s $pkg >/dev/null 2>&1; then
          echo "$pkg is not installed!\n"
     fi
