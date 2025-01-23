@@ -5,4 +5,5 @@ To install everything just run:
 ```bash install.sh```
 
 To configure everything just run:
+
 ```bash config.sh```
