@@ -1,6 +1,3 @@
-# Export the nvim to the standard path
-export PATH="$HOME/.local/nvim/bin:$PATH"
-
 # Set neovim as the default editor
 export EDITOR="nvim"
 
