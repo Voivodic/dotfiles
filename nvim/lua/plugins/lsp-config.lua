@@ -16,7 +16,7 @@ return {
 					"clangd",
 					"pylsp",
 					"bashls",
-					"ast_grep",
+                    "zls",
 				},
 			})
 		end,
