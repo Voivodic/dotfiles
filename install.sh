@@ -19,7 +19,7 @@ echo -e "Installing nix...\n"
 # Source the nix profile script
 echo -e "Sourcing nix profile...\n"
 {
-    . /etc/profile.d/nix.sh
+    . $HOME/.nix-profile/etc/profile.d/nix.sh 
 } && echo -e "Nix sourced!\n" || {
     echo -e "An error ocurred while trying to source nix!\n"
     exit 1
@@ -37,7 +37,7 @@ echo -e "Installing all packages with nix...\n"
     nix profile install nixpkgs#neovim $flags
     nix profile install nixpkgs#starship $flags
     nix profile install nixpkgs#python314 $flags
-    nix profile install nixpkgs#libgcc $flags
+    nix profile install nixpkgs#gcc14 $flags
     nix profile install nixpkgs#zig $flags
 } && echo -e "All files correctly installed!\n" || {
     echo -e "An error ocurred while trying to install packages!\n"
