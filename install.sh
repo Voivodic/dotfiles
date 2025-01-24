@@ -10,7 +10,7 @@ done
 # Install nix (multi-user)
 echo -e "Installing nix...\n"
 {
-    sudo sh <(curl -L https://nixos.org/nix/install) --daemon
+    sh <(curl -L https://nixos.org/nix/install) --daemon
 } && echo -e "Nix installed!\n" || {
     echo -e "An error ocurred while trying to install nix!\n"
     exit 1
