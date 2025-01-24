@@ -6,9 +6,8 @@ mkdir -p $HOME/.config
 # Create the symbolic links with the configurations
 ln -s $PWD/starship/starship.toml $HOME/.config/starship.toml
 ln -s $PWD/nvim $HOME/.config/nvim 
-mkdir -p $HOME/.config/tmux
-ln -s $PWD/tmux/plugins $HOME/.config/tmux/plugins
-ln -s $PWD/tmux/.tmux.conf $HOME/.tmux.conf
+ln -s $PWD/tmux $HOME/.config/tmux
+ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
 ln -s $PWD/nushell $HOME/.config/nushell
 
 # Add the initialization of tmux and nushell on .bashrc
@@ -20,8 +19,8 @@ else\n\
     # Just run nushell\n\
     nu; exit\n\
 fi"
-if ! grep -qF $bashrc ~/.bashrc; then
-        echo $bashrc >> ~/.bashrc
+if ! grep -qF "tmux new-session" ~/.bashrc; then
+        echo "$bashrc" >> ~/.bashrc
 fi
    
 source $HOME/.bashrc
