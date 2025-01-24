@@ -13,6 +13,14 @@ truncation_length = 3
 truncate_to_repo = false
 truncation_symbol = '.../'
 
+# Format the username information
+[username]
+disabled = true
+
+# Format the hostname information
+[hostname]
+disabled = true
+
 # Format conda information
 [conda]
 symbol = "🪱 "
