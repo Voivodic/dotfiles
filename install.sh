@@ -19,7 +19,7 @@ echo -e "Installing nix...\n"
 # Source the nix profile script
 echo -e "Sourcing nix profile...\n"
 {
-    . $HOME/.nix-profile/etc/profile.d/nix.sh
+    . /etc/profile.d/nix.sh
 } && echo -e "Nix sourced!\n" || {
     echo -e "An error ocurred while trying to source nix!\n"
     exit 1
