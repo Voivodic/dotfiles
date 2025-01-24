@@ -28,12 +28,15 @@ echo -e "Sourcing nix profile...\n"
 # Install all packages using nix
 echo -e "Installing all packages with nix...\n"
 {
-    nix-env -iA nixpkgs.nerdfonts
+    nix-env -iA nixpkgs.nerd-fonts.hack
     nix-env -iA nixpkgs.nushell
     nix-env -iA nixpkgs.fzf
     nix-env -iA nixpkgs.tmux
     nix-env -iA nixpkgs.neovim
     nix-env -iA nixpkgs.starship
+    nix-env -iA nixpkgs.python314
+    nix-env -iA nixpkgs.libgcc
+    nix-env -iA nixpkgs.zig
 } && echo -e "All files correctly installed!\n" || {
     echo -e "An error ocurred while trying to install packages!\n"
     exit 1
