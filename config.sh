@@ -9,18 +9,6 @@ ln -s $PWD/nvim $HOME/.config/nvim
 ln -s $PWD/tmux $HOME/.config/tmux
 ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
 ln -s $PWD/nushell $HOME/.config/nushell
+ln -s $PWD/bashrc $HOME/.bashrc  
 
-# Add the initialization of tmux and nushell on .bashrc
-bashrc = "# Check if the script is running inside a tmux session\n\
-if [ -z "$TMUX" ]; then\n\
-    # Start a new tmux session and run nushell\n\
-    tmux new-session -s main 'nu; exit; exit'\n\
-else\n\
-    # Just run nushell\n\
-    nu; exit\n\
-fi"
-if ! grep -qF "tmux new-session" ~/.bashrc; then
-        echo "$bashrc" >> ~/.bashrc
-fi
-   
 source $HOME/.bashrc
