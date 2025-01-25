@@ -12,5 +12,9 @@ ln -sf $PWD/bashrc $HOME/.bashrc
 ln -sf $PWD/profile $HOME/.profile
 ln -sf $PWD/nix $HOME/.config/nix
 
+# Download tmp to add plugins to tmux
+git clone https://github.com/tmux-plugins/tpm.git $HOME/.tmux/plugins/tpm
+. $HOME/.tmux/plugins/tpm/scripts/install-plugins.sh
+
 # Source the new bashrc
 source $HOME/.bashrc
