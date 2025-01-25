@@ -6,6 +6,9 @@ alias ls="ls --color=auto"
 alias ll="ls -lh --color=auto"
 alias la="ls -lha --color=auto"
 
+# Start nix
+. $HOME/.nix-profile/etc/profile.d/nix.sh
+
 # Check if the script is running inside a tmux session
 if [ -z "$TMUX" ]; then
     # Start a new tmux session and run nushell
