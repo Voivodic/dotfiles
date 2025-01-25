@@ -10,6 +10,8 @@ ln -sf $PWD/tmux $HOME/.config/tmux
 ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
 ln -sf $PWD/nushell $HOME/.config/nushell
 ln -sf $PWD/bashrc $HOME/.bashrc  
+ln -sf $PWD/profile $HOME/.profile
+ln -sf $PWD/nix $HOME/.config/nix
 
 # Source the new bashrc
 source $HOME/.bashrc
