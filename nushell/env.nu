@@ -1,5 +1,5 @@
 # Add to PATH
-$env.PATH = ($env.PATH | split row (char esep) | append "")
+# $env.PATH = ($env.PATH | split row (char esep) | append "")
 
 # Set the url generate by ngrok where ollama is running
 $env.OLLAMA_HOST = "https://eminent-superb-elephant.ngrok-free.app"

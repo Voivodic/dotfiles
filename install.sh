@@ -30,15 +30,23 @@ echo -e "Installing all packages with nix...\n"
 {
     flags="--extra-experimental-features nix-command --extra-experimental-features flakes"
 
+    # Install the main packages
     nix profile install nixpkgs#nerd-fonts.hack $flags
     nix profile install nixpkgs#nushell $flags
     nix profile install nixpkgs#fzf $flags
     nix profile install nixpkgs#tmux $flags
     nix profile install nixpkgs#neovim $flags
     nix profile install nixpkgs#starship $flags
-    nix profile install nixpkgs#python314 $flags
+
+    # Install some languages
+    nix profile install nixpkgs#python312 $flags
     nix profile install nixpkgs#gcc14 $flags
-    nix profile install nixpkgs#zig $flags
+    nix profile install nixpkgs#zig_0_13 $flags
+
+    # Install the lsp for the languages
+    nix profile install nixpkgs#python312Packages.python-lsp-server $flags
+    nix profile install nixpkgs#zls $flags
+
 } && echo -e "All files correctly installed!\n" || {
     echo -e "An error ocurred while trying to install packages!\n"
     exit 1

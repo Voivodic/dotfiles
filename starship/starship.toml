@@ -26,6 +26,11 @@ disabled = true
 symbol = "🪱 "
 format = '[$symbol$environment](dimmed green) '
 
+# Format nix-shell information
+[nix_shell]
+symbol = "❄️ "
+format = '[$symbol$state( \($name\))](bold blue) '
+
 # Format git information
 [git_branch]
 symbol = "  "
