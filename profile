@@ -8,7 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-if [ -e /home/voivodic/.nix-profile/etc/profile.d/nix.sh ]; then . /home/voivodic/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
