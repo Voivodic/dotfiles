@@ -7,23 +7,26 @@ for pkg in wget curl git; do
     fi
 done
 
-# Install nix (multi-user)
-echo -e "Installing nix...\n"
-{
-    sh <(curl -L https://nixos.org/nix/install) --no-daemon
-} && echo -e "Nix installed!\n" || {
-    echo -e "An error ocurred while trying to install nix!\n"
-    exit 1
-}
+# Check if nix is already running
+if [-z "$NIX_GCROOT" ]; then
+    # Install nix (multi-user)
+    echo -e "Installing nix...\n"
+    {
+        sh <(curl -L https://nixos.org/nix/install) --no-daemon
+    } && echo -e "Nix installed!\n" || {
+        echo -e "An error ocurred while trying to install nix!\n"
+        exit 1
+    }
 
-# Source the nix profile script
-echo -e "Sourcing nix profile...\n"
-{
-    . $HOME/.nix-profile/etc/profile.d/nix.sh 
-} && echo -e "Nix sourced!\n" || {
-    echo -e "An error ocurred while trying to source nix!\n"
-    exit 1
-}
+    # Source the nix profile script
+    echo -e "Sourcing nix profile...\n"
+    {
+        . $HOME/.nix-profile/etc/profile.d/nix.sh 
+    } && echo -e "Nix sourced!\n" || {
+        echo -e "An error ocurred while trying to source nix!\n"
+        exit 1
+    }
+fi
 
 # Install all packages using nix
 echo -e "Installing all packages with nix...\n"
