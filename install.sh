@@ -53,7 +53,7 @@ echo -e "Installing all packages with nix...\n"
     nix profile install nixpkgs#python312Packages.pylint $flags
     nix profile install nixpkgs#python312Packages.black $flags
     nix profile install nixpkgs#python312Packages.isort $flags
-    nix profile install nixpkgs#llvmPackages_19.clang_tools $flags
+    nix profile install nixpkgs#llvmPackages_19.clang-tools $flags
     nix profile install nixpkgs#cpplint $flags
     nix profile install nixpkgs#zls $flags
 
