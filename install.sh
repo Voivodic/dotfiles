@@ -45,6 +45,7 @@ echo -e "Installing all packages with nix...\n"
 
     # Install the lsp for the languages
     nix profile install nixpkgs#python312Packages.python-lsp-server $flags
+    nix profile install nixpkgs#python312Packages.black $flags
     nix profile install nixpkgs#zls $flags
 
 } && echo -e "All files correctly installed!\n" || {

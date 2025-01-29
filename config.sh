@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Remove all current configurations
-rm -rf $HOME/.config/starship.toml $HOME/.config/nvim $HOME/.tmux.conf $HOME/.config/nushell $HOME/.bashrc $HOME/.profile $HOME/.config/nix
+rm -rf $HOME/.config/starship.toml $HOME/.config/nvim $HOME/.tmux.conf $HOME/.tmux/plugins $HOME/.config/nushell $HOME/.bashrc $HOME/.profile $HOME/.config/nix
 
 # Create the configuration file if not present
 mkdir -p $HOME/.config
