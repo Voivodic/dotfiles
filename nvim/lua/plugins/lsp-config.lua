@@ -29,10 +29,8 @@ return {
 				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.clangd.setup({ capabilities = capabilities })
 			lspconfig.pylsp.setup({ capabilities = capabilities })
-			lspconfig.bashls.setup({ capabilities = capabilities })
             lspconfig.zls.setup({ capabilities = capabilities })
 
 			-- vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, {})

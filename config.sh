@@ -17,7 +17,7 @@ ln -s $PWD/nix $HOME/.config/nix
 
 # Download tmp to add plugins to tmux
 git clone https://github.com/tmux-plugins/tpm.git $HOME/.tmux/plugins/tpm
-. $HOME/.tmux/plugins/tpm/scripts/install-plugins.sh
+. $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # Source the new bashrc
 source $HOME/.bashrc
