@@ -8,7 +8,7 @@ for pkg in wget curl git; do
 done
 
 # Check if nix is already running
-if [-z "$NIX_GCROOT" ]; then
+if [ -z "$NIX_GCROOT" ]; then
     # Install nix (multi-user)
     echo -e "Installing nix...\n"
     {
