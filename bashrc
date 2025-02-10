@@ -10,7 +10,7 @@ if [ -z "$NIX_GCROOT" ]; then
     # Check if the script is running inside a tmux session
     if [ -z "$TMUX" ]; then
         # Start a new tmux session and run nushell
-        tmux new-session -s main 'nu; exit; exit'
+        tmux new-session -s main 'nu; exit; exit'; exit
     else
         # Just run nushell
         nu; exit
