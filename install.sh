@@ -38,6 +38,7 @@ echo -e "Installing all packages with nix...\n"
     nix profile install nixpkgs#nushell $flags
     nix profile install nixpkgs#fzf $flags
     nix profile install nixpkgs#unzip $flags
+    nix profile install nixpkgs#sshfs $flags
     nix profile install nixpkgs#tmux $flags
     nix profile install nixpkgs#neovim $flags
     nix profile install nixpkgs#starship $flags
