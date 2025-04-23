@@ -33,7 +33,7 @@ format = '[$symbol$state( \($name\))](bold blue) '
 
 # Format git information
 [git_branch]
-symbol = "  "
+symbol = " "
 style = "bold purple"
 truncation_length = 10
 truncation_symbol = '.../'
