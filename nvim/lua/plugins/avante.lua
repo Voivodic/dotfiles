@@ -5,14 +5,10 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
         provider = "ollama",
-        vendors = {
-            ollama = {
-                __inherited_from = "openai",
-                api_key_name = "",
-                endpoint = "https://eminent-superb-elephant.ngrok-free.app/v1",
-                model = "codellama:7b",
-            },
-        },
+        ollama = {
+            endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
+        model = "deepseek-coder-v2:16b",
+        }, 
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
