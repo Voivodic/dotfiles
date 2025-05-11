@@ -6,7 +6,7 @@ return {
 	{
 		"L3MON4D3/LuaSnip",
 		name = "LuaSnip",
-		dependences = {
+		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
@@ -14,7 +14,7 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		name = "nvim-cmp",
-		commit = "6c84bc75c64f778e9f1dcb798ed41c7fcb93b639",
+		-- commit = "6c84bc75c64f778e9f1dcb798ed41c7fcb93b639",
 		dependencies = { "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lsp-signature-help" },
 		config = function()
 			local cmp = require("cmp")
@@ -40,6 +40,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
+                    { name = "cmp_luasnip" }, 
 				}, {
 					{ name = "buffer" },
 				}),

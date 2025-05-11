@@ -1,6 +1,9 @@
 return {
     "nvimtools/none-ls.nvim",
     name = "none-ls",
+    dependencies = {
+        "nvimtools/none-ls-extras.nvim",
+    },
     config = function()
         local null_ls = require("null-ls")
         null_ls.setup({
@@ -14,8 +17,8 @@ return {
 
                 -- Linters
                 null_ls.builtins.diagnostics.pylint, -- python
-                null_ls.builtins.diagnostics.cppcheck, -- C
-                null_ls.builtins.diagnostics.vale, -- latex
+                null_ls.builtins.diagnostics.cpplint, -- C
+                null_ls.builtins.diagnostics.textidote, -- latex
             },
         })
 
