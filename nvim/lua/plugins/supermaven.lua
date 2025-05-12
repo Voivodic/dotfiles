@@ -1,6 +1,7 @@
 return {
     "supermaven-inc/supermaven-nvim",
     name = "supermaven",
+
     config = function()
         require("supermaven-nvim").setup({  
             keymaps = {
@@ -10,7 +11,7 @@ return {
             },
             ignore_filetypes = { }, -- or { "cpp", }
             color = {
-                suggestion_color = "#f5e0dc",
+                suggestion_color = "#ff00e1",
                 cterm = 244,
             },
             log_level = "info", -- set to "off" to disable logging completely
