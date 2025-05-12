@@ -10,4 +10,7 @@ return {
         "nvim-telescope/telescope.nvim",
         "nvim-treesitter/nvim-treesitter",
     },
+    config = function()
+        require("obsidian").setup({})
+    end,
 }
