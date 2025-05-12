@@ -7,7 +7,8 @@ return {
         provider = "ollama",
         ollama = {
             endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
-        model = "deepseek-coder-v2:16b",
+            -- model = "phi4:14b",
+            model = "deepcoder:14b"
         }, 
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
