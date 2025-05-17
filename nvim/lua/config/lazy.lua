@@ -28,6 +28,7 @@ require("lazy").setup({
     { import = "plugins" },
     -- Disable some of the plugins not used now
     { "yetone/avante.nvim", enabled = true},
+    { "lewis6991/hover.nvim", enabled = false},
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
