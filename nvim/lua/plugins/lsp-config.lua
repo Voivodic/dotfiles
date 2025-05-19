@@ -22,6 +22,19 @@ return {
                         enablePickyRules = true,
                         motherTongue = "en",
                     },
+                    dictionary = {
+                        ["en-US"] = {
+                            "bispectrum",
+                            "wavenumber",
+                            "cutoff",
+                            "renormalizability",
+                            "Eq",
+                            "Gaussianity",
+                            "perturbatively",
+                            "trispectrum",
+                            "ansatz",
+                        },
+                    },
                 },
             },
         })
