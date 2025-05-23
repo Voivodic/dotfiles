@@ -4,12 +4,19 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-        provider = "ollama",
+        provider = "requesty",
         ollama = {
             endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
-            -- model = "phi4:14b",
             model = "deepcoder:14b"
         }, 
+        vendors = {
+            requesty = {
+                __inherited_from = "openai",
+                api_key_name = "REQUESTY_API_KEY",
+                endpoint = "https://router.requesty.ai/v1",
+                model = "google/gemini-2.0-flash-thinking-exp-01-21",
+            },
+        },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
