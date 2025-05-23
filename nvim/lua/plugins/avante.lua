@@ -17,6 +17,12 @@ return {
                 model = "google/gemini-2.0-flash-thinking-exp-01-21",
             },
         },
+        openrouter = {
+            __inherited_from = 'openai',
+            endpoint = 'https://openrouter.ai/api/v1',
+            api_key_name = 'OPENROUTER_API_KEY',
+            model = '',
+        },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
