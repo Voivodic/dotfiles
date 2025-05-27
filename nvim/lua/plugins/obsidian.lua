@@ -1,50 +1,39 @@
 return {
-    {
-        'MeanderingProgrammer/render-markdown.nvim',
-        name = 'render-markdown',
-        after = { 'nvim-treesitter' },
-        requires = { 'echasnovski/mini.nvim', opt = true }, 
-        config = function()
-            require('render-markdown').setup({})
-        end,
+    "epwalsh/obsidian.nvim",
+    name = "obsidian",
+    version = "*",  -- recommended, use latest release instead of latest commit
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+        "nvim-telescope/telescope.nvim",
+        "nvim-treesitter/nvim-treesitter",
     },
-    {
-        "epwalsh/obsidian.nvim",
-        name = "obsidian",
-        version = "*",  -- recommended, use latest release instead of latest commit
-        lazy = true,
-        ft = "markdown",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-            "nvim-telescope/telescope.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-            require("obsidian").setup({
-                ui = {
-                    enable = false,
+    config = function()
+        require("obsidian").setup({
+            ui = {
+                enable = false,
+            },
+            completion = {
+                nvim_cmp = true,
+                min_chars = 2,
+            },
+            notes_subdir = "notes",
+            new_notes_location = "notes_subdir",
+            workspaces = {
+                {
+                    name = "default",
+                    path = "~/GitRepos/obsidian",
                 },
-                completion = {
-                    nvim_cmp = true,
-                    min_chars = 2,
-                },
-                notes_subdir = "notes",
-                new_notes_location = "notes_subdir",
-                workspaces = {
-                    {
-                        name = "default",
-                        path = "~/GitRepos/obsidian",
-                    },
-                },
-                templates = {
-                    folder = "~/GitRepos/obsidian/templates",
-                    date_format = "%d-%m-%Y",
-                    time_format = "%H:%M",
-                },
-            })
+            },
+            templates = {
+                folder = "~/GitRepos/obsidian/templates",
+                date_format = "%d-%m-%Y",
+                time_format = "%H:%M",
+            },
+        })
 
-            vim.keymap.set("n", "<leader>ot", ":ObsidianTemplate note<CR>")
-        end,
-    },
+        vim.keymap.set("n", "<leader>ot", ":ObsidianTemplate note<CR>")
+    end,
 }
