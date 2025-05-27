@@ -10,6 +10,7 @@ return {
         lspconfig.pylsp.setup({ capabilities = capabilities })
         lspconfig.zls.setup({ capabilities = capabilities })
         lspconfig.nixd.setup({ capabilities = capabilities })
+        lspconfig.texlab.setup({ capabilities = capabilities })
         lspconfig.ltex.setup({ 
             capabilities = capabilities,
             cmd = { "ltex-ls-plus" },
