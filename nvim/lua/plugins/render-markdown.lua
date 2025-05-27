@@ -6,6 +6,7 @@ return {
     config = function()
         require('render-markdown').setup({
             completions = { lsp = { enabled = true } },
+            file_types = { "markdown", "avante" },
         })
     end,
 }
