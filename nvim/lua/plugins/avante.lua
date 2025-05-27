@@ -4,7 +4,7 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-        provider = "requesty",
+        provider = "openrouter",
         ollama = {
             endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
             model = "deepcoder:14b"
@@ -14,14 +14,14 @@ return {
                 __inherited_from = "openai",
                 api_key_name = "REQUESTY_API_KEY",
                 endpoint = "https://router.requesty.ai/v1",
-                model = "google/gemini-2.0-flash-thinking-exp-01-21",
+                model = "google/gemma-3-27b-it",
             },
-        },
-        openrouter = {
-            __inherited_from = "openai",
-            endpoint = "https://openrouter.ai/api/v1",
-            api_key_name = "OPENROUTER_API_KEY",
-            model = "",
+            openrouter = {
+                __inherited_from = "openai",
+                endpoint = "https://openrouter.ai/api/v1",
+                api_key_name = "OPENROUTER_API_KEY",
+                model = "mistralai/mistral-small-3.1-24b-instruct:free",
+            },
         },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
