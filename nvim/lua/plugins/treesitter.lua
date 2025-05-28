@@ -15,6 +15,7 @@ return {
                 "markdown_inline", 
                 "zig", 
                 "nix",
+                "yaml",
             },
             highlight = {
                 enable = true,
