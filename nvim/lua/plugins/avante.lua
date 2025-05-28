@@ -1,5 +1,6 @@
 return {
     "yetone/avante.nvim",
+    name = "avante",
     event = "VeryLazy",
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
@@ -9,6 +10,9 @@ return {
             endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
             model = "deepcoder:14b"
         }, 
+        gemini = {
+            model = "gemini-2.5-flash-preview-05-20",
+        },
         vendors = {
             requesty = {
                 __inherited_from = "openai",
@@ -28,13 +32,15 @@ return {
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
+        "nvim-treesitter/nvim-treesitter",
         "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
         --- The below dependencies are optional,
-        "hrsh7th/nvim-cmp",      -- autocompletion for avante commands and mentions
+        "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+        "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+        "ibhagwan/fzf-lua", -- for file_selector provider fzf
         "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua", -- for providers='copilot'
         {
             -- support for image pasting
             "HakonHarnes/img-clip.nvim",
