@@ -45,7 +45,8 @@ return {
     },
     config = function()
         require("avante").setup({
-            provider = "openrouter",
+            mode = "legacy",
+            provider = "openrouter_olympic",
             ollama = {
                 endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
                 model = "deepcoder:14b"
@@ -54,19 +55,28 @@ return {
                 model = "gemini-2.5-flash-preview-05-20",
             },
             vendors = {
-                requesty = {
-                    __inherited_from = "openai",
-                    api_key_name = "REQUESTY_API_KEY",
-                    endpoint = "https://router.requesty.ai/v1",
-                    model = "google/gemma-3-27b-it",
-                },
-                openrouter = {
+                openrouter_mistral = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "mistralai/mistral-small-3.1-24b-instruct:free",
+                    -- model = "deepseek/deepseek-r1-0528:free",
                 },
-            },
+                 openrouter_deepseek = {
+                    __inherited_from = "openai",
+                    endpoint = "https://openrouter.ai/api/v1",
+                    api_key_name = "OPENROUTER_API_KEY",
+                    model = "deepseek/deepseek-r1-0528:free",
+                    disable_tools = true,
+                },
+                openrouter_olympic = {
+                    __inherited_from = "openai",
+                    endpoint = "https://openrouter.ai/api/v1",
+                    api_key_name = "OPENROUTER_API_KEY",
+                    model = "open-r1/olympiccoder-32b:free",
+                    disable_tools = true,
+                },
+           },
 
             -- system_prompt as function ensures LLM always has latest MCP server state
             -- This is evaluated for every message, even in existing chats
