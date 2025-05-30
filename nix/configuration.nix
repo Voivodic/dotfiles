@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 let
   unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixpkgs-unstable.tar.gz") { config.allowUnfree = true; }; 
@@ -161,14 +157,15 @@ in
       unstable.zig
       unstable.rustup
       unstable.texliveFull
+      unstable.nodejs
 
       # Install LSPs
       unstable.python313Packages.python-lsp-server
       unstable.clang-tools
       unstable.zls
       unstable.nixd
+      unstable.ltex-ls-plus
       unstable.texlab
-      unstable.ltex-ls
       # Formatters
       unstable.isort
       unstable.black
@@ -188,6 +185,9 @@ in
       godot_4
       glfw
       bottles
+
+      # Aider for LLM in terminal
+      unstable.aider-chat-full 
 
       # For managing containers
       podman
