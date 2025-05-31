@@ -46,7 +46,7 @@ return {
     config = function()
         require("avante").setup({
             mode = "legacy",
-            provider = "openrouter_olympic",
+            provider = "openrouter_mistral",
             ollama = {
                 endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
                 model = "deepcoder:14b"
@@ -59,14 +59,20 @@ return {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
-                    model = "mistralai/mistral-small-3.1-24b-instruct:free",
-                    -- model = "deepseek/deepseek-r1-0528:free",
+                    model = "mistralai/devstral-small:free",
                 },
-                 openrouter_deepseek = {
+                 openrouter_deepseekR1 = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "deepseek/deepseek-r1-0528:free",
+                    disable_tools = true,
+                },
+                openrouter_deepseekV3 = {
+                    __inherited_from = "openai",
+                    endpoint = "https://openrouter.ai/api/v1",
+                    api_key_name = "OPENROUTER_API_KEY",
+                    model = "deepseek/deepseek-chat-v3-0324:free",
                     disable_tools = true,
                 },
                 openrouter_olympic = {
