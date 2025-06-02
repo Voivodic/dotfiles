@@ -27,11 +27,11 @@ return {
                     path = "~/GitRepos/obsidian",
                 },
             },
-            templates = {
-                folder = "~/GitRepos/obsidian/templates",
-                date_format = "%d-%m-%Y",
-                time_format = "%H:%M",
-            },
+            -- templates = {
+            --     folder = "~/GitRepos/obsidian/templates",
+            --     date_format = "%d-%m-%Y",
+            --     time_format = "%H:%M",
+            -- },
         })
 
         vim.keymap.set("n", "<leader>ot", ":ObsidianTemplate note<CR>")
