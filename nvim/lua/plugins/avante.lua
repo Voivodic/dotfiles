@@ -48,35 +48,35 @@ return {
         require("avante").setup({
             mode = "base",
             provider = "gemini",
-            ollama = {
-                endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
-                model = "deepcoder:14b"
-            }, 
-            gemini = {
-                model = "gemini-2.5-flash-preview-05-20",
-            },
-            vendors = {
-                openrouter_mistral = {
+            providers = {
+                ollama = {
+                    endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
+                    model = "deepcoder:14b"
+                }, 
+                gemini = {
+                    model = "gemini-2.5-flash-preview-05-20",
+                },
+                mistral = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "mistralai/devstral-small:free",
                 },
-                 openrouter_deepseekR1 = {
+                deepseekR1 = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "deepseek/deepseek-r1-0528:free",
                     disable_tools = true,
                 },
-                openrouter_deepseekV3 = {
+                deepseekV3 = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "deepseek/deepseek-chat-v3-0324:free",
                     disable_tools = true,
                 },
-                openrouter_olympic = {
+                olympic = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
