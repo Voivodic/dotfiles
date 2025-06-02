@@ -43,10 +43,11 @@ return {
             ft = { "markdown", "Avante" },
         },
     },
+
     config = function()
         require("avante").setup({
-            mode = "legacy",
-            provider = "openrouter_mistral",
+            mode = "base",
+            provider = "gemini",
             ollama = {
                 endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
                 model = "deepcoder:14b"
