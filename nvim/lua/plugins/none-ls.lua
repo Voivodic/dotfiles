@@ -9,7 +9,6 @@ return {
         null_ls.setup({
             sources = {
                 -- Formatting tools
-                null_ls.builtins.formatting.isort, -- python's imports
                 null_ls.builtins.formatting.black, -- python
                 null_ls.builtins.formatting.clang_format.with({
                     extra_args = { "-style=file" },
