@@ -51,7 +51,7 @@ return {
                         },
                         schema = {
                             model = {
-                                default = "mistralai/mistral-small-3.1-24b-instruct:free",
+                                default = "mistralai/devstral-small:free",
                             },
                         },
                     })
@@ -82,11 +82,21 @@ return {
                 }
             },
 
+            extensions = {
+                mcphub = {
+                    callback = "mcphub.extensions.codecompanion",
+                    opts = {
+                        show_result_in_chat = true,  -- Show mcp tool results in chat
+                        make_vars = true,            -- Convert resources to #variables
+                        make_slash_commands = true,  -- Add prompts as /slash commands
+                    },
+                },
+            },
         })
 
         -- Custom keymaps
-        vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat<CR>", {})
-        vim.keymap.set("n", "<leader>ca", ":CodeCompanionActions<CR>", {})
-        vim.keymap.set({"n", "v"}, "<leader>ce", ":CodeCompanion<CR>", {})
+        vim.keymap.set("n", "<leader>aa", ":CodeCompanionChat<CR>", {})
+        vim.keymap.set("n", "<leader>ac", ":CodeCompanionActions<CR>", {})
+        vim.keymap.set({"n", "v"}, "<leader>ae", ":CodeCompanion<CR>", {})
     end,
 }
