@@ -17,6 +17,7 @@ return {
                 -- Linters
                 null_ls.builtins.diagnostics.pylint, -- python
                 null_ls.builtins.diagnostics.cppcheck, -- C/C++
+                null_ls.builtins.diagnostics.rstcheck, -- rst
                 -- null_ls.builtins.diagnostics.codespell, -- spelling
             },
         })
