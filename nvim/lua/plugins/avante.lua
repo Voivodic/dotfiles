@@ -50,7 +50,7 @@ return {
             provider = "gemini",
             providers = {
                 ollama = {
-                    endpoint = "https://eminent-superb-elephant.ngrok-free.app", -- Note that there is no /v1 at the end.
+                    endpoint = "https://eminent-superb-elephant.ngrok-free.app",
                     model = "deepcoder:14b"
                 }, 
                 gemini = {
