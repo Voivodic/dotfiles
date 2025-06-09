@@ -8,6 +8,7 @@ return {
         local lspconfig = require("lspconfig")
         lspconfig.clangd.setup({ capabilities = capabilities })
         lspconfig.pylsp.setup({ capabilities = capabilities })
+        lspconfig.ruff.setup({ capabilities = capabilities })
         lspconfig.zls.setup({ capabilities = capabilities })
         lspconfig.nixd.setup({ capabilities = capabilities })
         lspconfig.texlab.setup({ capabilities = capabilities })
