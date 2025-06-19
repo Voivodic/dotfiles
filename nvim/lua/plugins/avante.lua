@@ -45,18 +45,28 @@ return {
     },
 
     config = function()
+        vim.opt.laststatus = 3
         require("avante").setup({
-            mode = "base",
-            provider = "gemini",
+            mode = "legacy",
+            provider = "gemini_flash",
+            cursor_applying_provider = "gemini_flash_lite",
+            behaviour = {
+                enable_cursor_planning_mode = true,
+            },
             providers = {
                 ollama = {
                     endpoint = "https://eminent-superb-elephant.ngrok-free.app",
                     model = "deepcoder:14b"
                 }, 
-                gemini = {
-                    model = "gemini-2.5-flash-preview-05-20",
+                gemini_flash = {
+                    __inherited_from = "gemini",
+                    model = "gemini-2.5-flash",
                 },
-                mistral = {
+                gemini_flash_lite = {
+                    __inherited_from = "gemini",
+                    model = "gemini-2.5-flash-lite-preview-06-17",
+                },
+                devstral = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
@@ -74,7 +84,6 @@ return {
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "deepseek/deepseek-chat-v3-0324:free",
-                    disable_tools = true,
                 },
                 olympic = {
                     __inherited_from = "openai",
@@ -85,32 +94,32 @@ return {
                 },
            },
 
-            -- system_prompt as function ensures LLM always has latest MCP server state
-            -- This is evaluated for every message, even in existing chats
-            system_prompt = function()
-                local hub = require("mcphub").get_hub_instance()
-                return hub and hub:get_active_servers_prompt() or ""
-            end,
-            -- Using function prevents requiring mcphub before it's loaded
-            custom_tools = function()
-                return {
-                    require("mcphub.extensions.avante").mcp_tool(),
-                }
-            end,
+           -- system_prompt as function ensures LLM always has latest MCP server state
+           -- This is evaluated for every message, even in existing chats
+           system_prompt = function()
+               local hub = require("mcphub").get_hub_instance()
+               return hub and hub:get_active_servers_prompt() or ""
+           end,
+           -- Using function prevents requiring mcphub before it's loaded
+           custom_tools = function()
+               return {
+                   require("mcphub.extensions.avante").mcp_tool(),
+               }
+           end,
 
-            -- Diasble some tools because of the conflicts with mcphub
-            disabled_tools = {
-                "list_files",    -- Built-in file operations
-                "search_files",
-                "read_file",
-                "create_file",
-                "rename_file",
-                "delete_file",
-                "create_dir",
-                "rename_dir",
-                "delete_dir",
-                "bash",         -- Built-in terminal access
-            },
+           -- Diasble some tools because of the conflicts with mcphub
+           -- disabled_tools = {
+           --     "list_files",    -- Built-in file operations
+           --     "search_files",
+           --     "read_file",
+           --     "create_file",
+           --     "rename_file",
+           --     "delete_file",
+           --     "create_dir",
+           --     "rename_dir",
+           --     "delete_dir",
+           --     "bash",         -- Built-in terminal access
+           -- },
 
         })
     end,
