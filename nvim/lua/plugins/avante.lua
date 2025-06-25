@@ -85,11 +85,11 @@ return {
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "deepseek/deepseek-chat-v3-0324:free",
                 },
-                olympic = {
+                kimi = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
-                    model = "open-r1/olympiccoder-32b:free",
+                    model = "moonshotai/kimi-dev-72b:free",
                     disable_tools = true,
                 },
            },
