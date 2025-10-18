@@ -1,326 +1,255 @@
-{ config, pkgs, ... }:
-let
-  unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixpkgs-unstable.tar.gz") { config.allowUnfree = true; }; 
-in
+{ config, pkgs, mcp-hub, ... }: # mcp-hub is now passed in by the flake
+
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+    imports = [ ./hardware-configuration.nix ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+    # REMOVED: The old 'unstable' and 'mcp-hub' let blocks.
+    # The flake now manages these inputs.
 
-  networking.hostName = "nixos"; # Define your hostname.
-
-  # Enable networkManager to manage the network connections
-  networking.networkmanager.enable = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Set your time zone.
-  time.timeZone = "America/Sao_Paulo";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_ES.UTF-8";
-    LC_IDENTIFICATION = "es_ES.UTF-8";
-    LC_MEASUREMENT = "es_ES.UTF-8";
-    LC_MONETARY = "es_ES.UTF-8";
-    LC_NAME = "es_ES.UTF-8";
-    LC_NUMERIC = "es_ES.UTF-8";
-    LC_PAPER = "es_ES.UTF-8";
-    LC_TELEPHONE = "es_ES.UTF-8";
-    LC_TIME = "es_ES.UTF-8";
-  };
-
-  # Enable hyperland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    withUWSM = true;
-  };
-
-  # Extra configurations for hyprland
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-  hardware = {
-    graphics.enable = true;
-    graphics.enable32Bit = true;
-  };
-  #security.pam.services.hyprlock = {};
-
-  # Set the nvidia GPU
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    # Configuration taken from nixos website
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-  # Options to set how to change between GPU and CPU's graphics
-  hardware.nvidia.prime = {
-    # Set the to change between the gpus
-    sync.enable = true;
-
-    # BUS ID for the cpu's GPU and the nvidia's GPU
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:43:0:0";
-  };
-
-  #XDG portal
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # For starting the graphical interface directly
-  services.greetd = {
-    enable = true;
-    settings = {
-      initial_session = {
-        command = "Hyprland";
-        user = "voivodic";
-      };
-      default_session = {
-        command = "Hyprland";
-        user = "voivodic";
-      };
+    nix.settings = {
+        max-jobs = 1;
+        cores = 4;
+        experimental-features = [ "nix-command" "flakes" ];
+        auto-optimise-store = true;
+        trusted-users = [ "root" "voivodic" ];
     };
-  };
 
-  # For mounting USB devices
-  services.gvfs.enable = true; 
-  services.udisks2.enable = true;
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
-  # Enable sound with pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
+    networking.hostName = "nixos";
+    networking.networkmanager.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "br";
-    variant = "nodeadkeys";
-  };
+    time.timeZone = "America/Sao_Paulo";
+    i18n.defaultLocale = "en_US.UTF-8";
+    i18n.extraLocaleSettings = {
+        LC_ADDRESS = "es_ES.UTF-8";
+        LC_IDENTIFICATION = "es_ES.UTF-8";
+        LC_MEASUREMENT = "es_ES.UTF-8";
+        LC_MONETARY = "es_ES.UTF-8";
+        LC_NAME = "es_ES.UTF-8";
+        LC_NUMERIC = "es_ES.UTF-8";
+        LC_PAPER = "es_ES.UTF-8";
+        LC_TELEPHONE = "es_ES.UTF-8";
+        LC_TIME = "es_ES.UTF-8";
+    };
 
-  # Configure console keymap
-  console.keyMap = "br-abnt2";
+    # Enable hyperland
+    programs.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+        withUWSM = true;
+    };
 
-  # Enable bluetooth
-  hardware.bluetooth.enable = true; 
-  hardware.bluetooth.powerOnBoot = true; 
-  services.blueman.enable = true;
+    # Set the default browser
+    environment.variables.BROWSER = "microsoft-edge";
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+    # Extra configurations for hyprland
+    environment.sessionVariables = {
+        NIXOS_OZONE_WL = "1";
+    };
+    hardware = {
+        graphics.enable = true;
+        graphics.enable32Bit = true;
+    };
+    #security.pam.services.hyprlock = {};
 
-  # Enable steam
-  programs.steam.enable = true;
+    # Set the nvidia GPU
+    services.xserver.videoDrivers = ["nvidia"];
+    hardware.nvidia = {
+        # Configuration taken from nixos website
+        modesetting.enable = true;
+        powerManagement.enable = false;
+        powerManagement.finegrained = false;
+        open = false;
+        nvidiaSettings = true;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
 
-  # Enable appimages
-  programs.appimage.enable = true;
-  programs.appimage.binfmt = true;
+    # Options to set how to change between GPU and CPU's graphics
+    hardware.nvidia.prime = {
+        # Set the to change between the gpus
+        sync.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.voivodic = {
-    isNormalUser = true;
-    description = "Voivodic";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.nushell;
-    packages = with pkgs; [
-      # Install the main packages
-      unstable.neovim
-      unstable.nushell
-      fzf
-      unzip
-      sshfs
-      unstable.tmux
-      unstable.starship
+        # BUS ID for the cpu's GPU and the nvidia's GPU
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:43:0:0";
+    };
 
-      # Install some languages
-      unstable.python313
-      unstable.gcc
-      unstable.zig
-      unstable.rustup
-      unstable.texliveFull
-      unstable.nodejs
+    #XDG portal
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-      # Install LSPs
-      unstable.python313Packages.python-lsp-server
-      unstable.clang-tools
-      unstable.zls
-      unstable.nixd
-      unstable.ltex-ls-plus
-      unstable.texlab
-      # Formatters
-      unstable.isort
-      unstable.black
-      # Linters
-      unstable.pylint
-      unstable.cppcheck
-      unstable.codespell
+    # For starting the graphical interface directly
+    services.greetd = {
+        enable = true;
+        settings = {
+            initial_session = {
+                command = "Hyprland";
+                user = "voivodic";
+            };
+            default_session = {
+                command = "Hyprland";
+                user = "voivodic";
+            };
+        };
+    };
 
-      # Ollama for running LLMs
-      unstable.ollama
+    # For mounting USB devices
+    services.gvfs.enable = true; 
+    services.udisks2.enable = true;
 
-      # Install some extra packages
-      spotify
-      zoom-us
+    # Adjust the mouse sensitivity
+    services.libinput.enable = true;
+    services.libinput.mouse.accelProfile = "flat"; # Disable acceleration
+    services.libinput.mouse.accelSpeed = -0.9; # Adjust sensitivity
 
-      # Stuff for games
-      godot_4
-      glfw
-      bottles
+    # Enable sound with pipewire
+    security.rtkit.enable = true;
+    services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+        jack.enable = true;
+    };
 
-      # Aider for LLM in terminal
-      unstable.aider-chat-full 
+    # Configure keymap in X11
+    services.xserver.xkb = {
+        layout = "br";
+        variant = "nodeadkeys";
+    };
 
-      # For managing containers
-      podman
+    # Configure console keymap
+    console.keyMap = "br-abnt2";
 
-      # For showing information about the system 
-      neofetch
+    # Enable bluetooth
+    hardware.bluetooth.enable = true; 
+    hardware.bluetooth.powerOnBoot = true; 
+    services.blueman.enable = true;
+
+    # Allow unfree packages
+    nixpkgs.config.allowUnfree = true;
+
+    # Enable steam
+    programs.steam.enable = true;
+
+    # Enable appimages
+    programs.appimage.enable = true;
+    programs.appimage.binfmt = true;
+
+
+    # Define a user account.
+    users.users.voivodic = {
+        isNormalUser = true;
+        description = "Voivodic";
+        extraGroups = [ "networkmanager" "wheel" ];
+        # The shell is now managed by Home Manager, but it's good to have a fallback.
+        shell = pkgs.nushell;
+        # REMOVED: The entire 'packages' list has been moved to home.nix
+    };
+
+    # List of SYSTEM WIDE packages.
+    # These are tools needed for the system to function correctly.
+    environment.systemPackages = with pkgs; [
+        # Some useful CLIs
+        git
+        wget
+        curl
+        htop
+        lshw
+        gnumake
+        cmake
+        lm_sensors
+
+        # Wayland
+        hyprland
+        xwayland
+
+        # For input devices
+        libinput
+
+        # For vulkan
+        libGL
+        pkgs.mesa
+        pkgs.vulkan-loader
+        pkgs.vulkan-tools
+        pkgs.vulkan-validation-layers
+
+        # Cursor
+        hyprcursor
+
+        # Screen-shots
+        hyprshot
+
+        # Status bar
+        waybar
+        hyprpicker
+        blueman
+        bluez
+        networkmanager
+        swaynotificationcenter
+
+        # Notifications
+        #swaynotificationcenter
+        #pywal
+        gvfs
+        libnotify
+
+        # Lock screen
+        hyprlock
+        hypridle
+        greetd.greetd
+
+        # Logout menu
+        wlogout
+
+        # Wallpaper
+        swww
+        waypaper
+        jq
+
+        # Terminal
+        ghostty
+
+        # Launcher
+        wofi 
+
+        # Browser
+        microsoft-edge
+
+        # Network management tool
+        #networkmanager
+        networkmanagerapplet
+
+        # For managing usb devices
+        usermount
+        gvfs
+        ntfs3g
+
+        # File manager
+        ueberzugpp
+        yazi
+
+        # PDF viewer and note taking
+        zathura 
+        xournalpp
+
+        # PNG viwer
+        swayimg
+
     ];
-  };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # Some useful CLIs
-    git
-    wget
-    curl
-    htop
-    lshw
-    gnumake
-    cmake
-
-    # Wayland
-    hyprland
-    xwayland
-
-    # For vulkan
-    libGL
-    pkgs.mesa
-    pkgs.vulkan-loader
-    pkgs.vulkan-tools
-    pkgs.vulkan-validation-layers
-
-    # Cursor
-    hyprcursor
-
-    # Screen-shots
-    hyprshot
-
-    # Status bar
-    waybar
-    hyprpicker
-    blueman
-    bluez
-    networkmanager
-    swaynotificationcenter
-
-    # Notifications
-    #swaynotificationcenter
-    #pywal
-    gvfs
-    libnotify
-
-    # Lock screen
-    hyprlock
-    hypridle
-    greetd.greetd
-
-    # Logout menu
-    wlogout
-
-    # Wallpaper
-    swww
-    waypaper
-    jq
-
-    # Terminal
-    ghostty
-
-    # Launcher
-    wofi 
-
-    # Browser
-    microsoft-edge
-
-    # Network management tool
-    #networkmanager
-    networkmanagerapplet
-
-    # For managing usb devices
-    usermount
-    gvfs
-    ntfs3g
-
-    # File manager
-    ueberzugpp
-    yazi
-
-    # PDF viewer and note taking
-    zathura 
-    xournalpp
-  ];
-
-  # Enable fonts and set them
-  fonts.fontDir.enable = true;
-  fonts.packages = with pkgs; [
-    nerdfonts
-    font-awesome
-  ];
-
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
-
-  # Some overlay configs
-  nixpkgs.overlays = [
-    (self: super: {
-      waybar = super.waybar.overrideAttrs (oldAttrs : {
-        masonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    })
-  ];
+    # ... (keep fonts, services, stateVersion, etc.)
+    fonts.fontDir.enable = true;
+    fonts.packages = with pkgs; [ nerdfonts font-awesome ];
+    services.openssh.enable = true;
+    system.stateVersion = "25.05";
+    nixpkgs.overlays = [
+        (self: super: {
+            waybar = super.waybar.overrideAttrs (oldAttrs: {
+                mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+            });
+        })
+    ];
 }
