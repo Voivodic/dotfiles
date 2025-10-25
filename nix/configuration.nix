@@ -18,18 +18,6 @@
     networking.networkmanager.enable = true;
 
     time.timeZone = "America/Sao_Paulo";
-    i18n.defaultLocale = "en_US.UTF-8";
-    i18n.extraLocaleSettings = {
-        LC_ADDRESS = "es_ES.UTF-8";
-        LC_IDENTIFICATION = "es_ES.UTF-8";
-        LC_MEASUREMENT = "es_ES.UTF-8";
-        LC_MONETARY = "es_ES.UTF-8";
-        LC_NAME = "es_ES.UTF-8";
-        LC_NUMERIC = "es_ES.UTF-8";
-        LC_PAPER = "es_ES.UTF-8";
-        LC_TELEPHONE = "es_ES.UTF-8";
-        LC_TIME = "es_ES.UTF-8";
-    };
 
     # Enable hyperland
     programs.hyprland = {
@@ -149,16 +137,6 @@
     # List of SYSTEM WIDE packages.
     # These are tools needed for the system to function correctly.
     environment.systemPackages = with pkgs; [
-        # Some useful CLIs
-        git
-        wget
-        curl
-        htop
-        lshw
-        gnumake
-        cmake
-        lm_sensors
-
         # Wayland
         hyprland
         xwayland
@@ -235,11 +213,17 @@
         # PNG viwer
         swayimg
 
+        # Install some extra packages
+        spotify
+        zoom-us
+
+        # Stuff for games
+        godot_4
+        glfw
+        bottles
     ];
 
     # ... (keep fonts, services, stateVersion, etc.)
-    fonts.fontDir.enable = true;
-    fonts.packages = [ pkgs.nerd-fonts.droid-sans-mono pkgs.font-awesome ];
     services.openssh.enable = true;
     system.stateVersion = "25.05";
     nixpkgs.overlays = [

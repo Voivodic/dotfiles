@@ -1,13 +1,33 @@
 { pkgs, ... }:
 
 {
-    # Home Manager needs to know your username and home directory.
-    home.username = "voivodic";
-    home.homeDirectory = "/home/voivodic";
+    # Format of the text
+    home.sessionVariables = {
+        LANG = "en_US.UTF-8";
+        LC_ADDRESS = "es_ES.UTF-8";
+        LC_IDENTIFICATION = "es_ES.UTF-8";
+        LC_MEASUREMENT = "es_ES.UTF-8";
+        LC_MONETARY = "es_ES.UTF-8";
+        LC_NAME = "es_ES.UTF-8";
+        LC_NUMERIC = "es_ES.UTF-8";
+        LC_PAPER = "es_ES.UTF-8";
+        LC_TELEPHONE = "es_ES.UTF-8";
+        LC_TIME = "es_ES.UTF-8";
+    };
 
     # This is the list of packages you want to install FOR YOUR USER.
     # We are moving this from your old configuration.nix
     home.packages = with pkgs; [
+         # Some useful CLIs
+        git
+        wget
+        curl
+        htop
+        lshw
+        gnumake
+        cmake
+        lm_sensors
+
         # Install the main packages
         neovim
         nushell
@@ -49,15 +69,6 @@
         # Ollama for running LLMs
         ollama
 
-        # Install some extra packages
-        spotify
-        zoom-us
-
-        # Stuff for games
-        godot_4
-        glfw
-        bottles
-
         # LLM in terminal
         gemini-cli
         qwen-code
@@ -70,6 +81,10 @@
 
         # For showing information about the system
         neofetch
+
+        # The fonts used
+        nerd-fonts.droid-sans-mono
+        font-awesome
     ];
 
     # Let Home Manager manage itself
@@ -77,6 +92,10 @@
 
     # Set your default shell
     programs.nushell.enable = true;
+
+    # Enable the fonts
+    fonts.fontconfig.enable = true;
+
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release

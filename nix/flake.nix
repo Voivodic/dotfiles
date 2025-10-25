@@ -27,9 +27,15 @@
 
         # The standalone Home Manager configuration for portability
         # You will use this on Arch Linux or other distros
-        homeConfigurations.voivodic = home-manager.lib.homeManagerConfiguration {
+        homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.x86_64-linux;
-            modules = [ ./home.nix ];
+            modules = [ 
+                { 
+                    home.username = username; 
+                    home.homeDirectory = "/home/${username}";
+                } # Pass the username explicitly
+                ./home.nix
+            ];
         };
     };
 }
