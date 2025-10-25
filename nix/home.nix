@@ -1,4 +1,4 @@
-{ pkgs, mcp-hub, ... }:
+{ pkgs, ... }:
 
 {
     # Home Manager needs to know your username and home directory.
@@ -24,6 +24,7 @@
         uv
         gcc
         zig
+        go
         rustup
         texliveFull
         nodejs
@@ -47,9 +48,6 @@
 
         # Ollama for running LLMs
         ollama
-
-        # Install mcp-hub (passed from the flake)
-        mcp-hub.packages.x86_64-linux.mcp-hub
 
         # Install some extra packages
         spotify

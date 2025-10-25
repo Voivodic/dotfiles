@@ -1,10 +1,7 @@
-{ config, pkgs, mcp-hub, ... }: # mcp-hub is now passed in by the flake
+{ config, pkgs, ... }:
 
 {
     imports = [ ./hardware-configuration.nix ];
-
-    # REMOVED: The old 'unstable' and 'mcp-hub' let blocks.
-    # The flake now manages these inputs.
 
     nix.settings = {
         max-jobs = 1;
@@ -199,7 +196,7 @@
         # Lock screen
         hyprlock
         hypridle
-        greetd.greetd
+        greetd
 
         # Logout menu
         wlogout
@@ -242,7 +239,7 @@
 
     # ... (keep fonts, services, stateVersion, etc.)
     fonts.fontDir.enable = true;
-    fonts.packages = with pkgs; [ nerdfonts font-awesome ];
+    fonts.packages = [ pkgs.nerd-fonts.droid-sans-mono pkgs.font-awesome ];
     services.openssh.enable = true;
     system.stateVersion = "25.05";
     nixpkgs.overlays = [
