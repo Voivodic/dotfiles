@@ -3,16 +3,28 @@ return {
     name = "nvim-lspconfig",
     config = function()
         local capabilities =
-            require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+        require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-        local lspconfig = require("lspconfig")
-        lspconfig.clangd.setup({ capabilities = capabilities })
-        lspconfig.pylsp.setup({ capabilities = capabilities })
-        lspconfig.ruff.setup({ capabilities = capabilities })
-        lspconfig.zls.setup({ capabilities = capabilities })
-        lspconfig.nixd.setup({ capabilities = capabilities })
-        lspconfig.texlab.setup({ capabilities = capabilities })
-        lspconfig.ltex.setup({ 
+        -- Define and configure the LSP servers
+        vim.lsp.config("clangd", {
+            capabilities = capabilities,
+        })
+        vim.lsp.config("pylsp", {
+            capabilities = capabilities,
+        })
+        vim.lsp.config("ruff", {
+            capabilities = capabilities,
+        })
+        vim.lsp.config("zls", {
+            capabilities = capabilities,
+        })
+        vim.lsp.config("nixd", {
+            capabilities = capabilities,
+        })
+        vim.lsp.config("texlab", {
+            capabilities = capabilities,
+        })
+        vim.lsp.config("ltex", {
             capabilities = capabilities,
             cmd = { "ltex-ls-plus" },
             settings = {
