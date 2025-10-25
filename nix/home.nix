@@ -1,20 +1,6 @@
 { pkgs, ... }:
 
 {
-    # Format of the text
-    home.sessionVariables = {
-        LANG = "en_US.UTF-8";
-        LC_ADDRESS = "es_ES.UTF-8";
-        LC_IDENTIFICATION = "es_ES.UTF-8";
-        LC_MEASUREMENT = "es_ES.UTF-8";
-        LC_MONETARY = "es_ES.UTF-8";
-        LC_NAME = "es_ES.UTF-8";
-        LC_NUMERIC = "es_ES.UTF-8";
-        LC_PAPER = "es_ES.UTF-8";
-        LC_TELEPHONE = "es_ES.UTF-8";
-        LC_TIME = "es_ES.UTF-8";
-    };
-
     # This is the list of packages you want to install FOR YOUR USER.
     # We are moving this from your old configuration.nix
     home.packages = with pkgs; [
