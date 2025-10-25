@@ -1,0 +1,82 @@
+/*@import url('$HOME/.config/themes/mocha.conf');*/
+
+@define-color mocha_base #1e1e2e;
+
+* {
+    all: unset;
+    background-image: none;
+    margin: unset;
+    padding: unset;
+    transition: 200ms cubic-bezier(0, 0, 1, 1);
+}
+button {
+    font-family: 'CodeNewRoman Nerd Font Mono';
+    background-color: alpha(@mocha_base,0.7);
+    border-radius: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+}
+
+#lock {
+    background-image: image(url("./lock.png"));
+    margin : 0px 0px 0px 0px;
+    padding: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+#shutdown {
+    background-image: image(url("./power.png"));
+    margin : 0px 0px 0px 0px;
+    padding: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+#logout {
+    background-image: image(url("./logout.png"));
+    margin : 0px 0px 0px 0px;
+    padding: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+#reboot {
+    background-image: image(url("./restart.png"));
+    margin : 0px 0px 0px 0px;
+    padding: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+#suspend {
+    background-image: image(url("./pause.png"));
+    margin : 0px 0px 0px 0px;
+    padding: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+#hibernate {
+    background-image: image(url("./sleep.png"));
+    margin : 0px 0px 0px 0px;
+    padding: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+/*
+#lock:focus {
+    margin : 5px 5px 5px 200px;
+}
+#shutdown:focus {
+    margin : 5px 200px 5px 5px;
+}
+#logout:focus {
+    margin : 5px 200px 5px 5px;
+}
+#reboot:focus {
+    margin : 5px 5px 5px 200px;
+}
+#suspend:focus {
+    margin : 5px 5px 5px 200px;
+}
+#hibernate:focus {
+    margin : 5px 5px 5px 200px;
+}*/
+
+button:hover{
+    background-color: alpha(@mocha_base,0.9);
+    color: #000000;
+    background-position:center;
+}

@@ -1,0 +1,5 @@
+theme = catppuccin-mocha
+background-opacity = 0.95
+background-blur = 0
+mouse-hide-while-typing = true
+font-size = 10 

@@ -1,0 +1,13 @@
+Host dipc
+    HostName 158.227.172.9
+    User researcher
+
+Host atlas248
+    HostName atlas-248.sw.ehu.es
+    User voivodic
+    # ProxyJump dipc
+
+Host oracle-website
+    HostName 130.110.248.62
+    User ubuntu
+    IdentityFile ~/.ssh/oracle_website.key

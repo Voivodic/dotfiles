@@ -1,0 +1,90 @@
+@define-color mocha_red #f38ba8;
+@define-color mocha_lavender #b4befe;
+@define-color mocha_text #cdd6f4;
+@define-color mocha_base #1e1e2e;
+@define-color mocha_framingo #f2cdcd;
+* {
+    all:unset;
+    font-family: 'CodeNewRoman Nerd Font Mono', monospace;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    text-shadow:none;
+    background-color:transparent;
+}
+
+window {
+    all:unset;
+    padding: 20px;
+    border-radius: 0px;
+    background-color: alpha(@mocha_base,.5);
+}
+#inner-box {
+    margin: 2px;
+    padding: 5px;
+    border: none;
+
+}
+#outer-box {    
+    border: none;
+}
+#scroll {
+    margin: 0px;
+    padding: 30px;
+    border: none;
+}
+#input {
+    all:unset;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:20px;
+    padding: 20px;
+    border: none;
+    outline: none;
+    color: @mocha_text;
+    box-shadow: 1px 1px 5px rgba(0,0,0, .5);
+    border-radius:10;
+    background-color: alpha(@mocha_base,.2);
+}
+#input image {
+    border: none;
+    color: @mocha_red;
+    padding-right:10px;
+}
+#input * {
+    border: none;
+    outline: none;
+}
+
+#input:focus {
+    outline: none;
+    border: none;
+
+    border-radius:10;
+}
+#text {
+    margin: 5px;
+    border: none;
+    color: @mocha_text;
+    outline: none;
+}
+#entry {
+    all:unset;
+    padding: 20 0 20 45;
+}
+#entry arrow {
+    border: none;
+    color: @mocha_lavender;
+
+}
+#entry:selected {
+    border: none;
+    border-radius: 20px;
+    background-color: alpha(@mocha_base,.2);
+}
+#entry:selected #text {
+    color: @mocha_flamingo;
+}
+#entry:drop(active) {
+    background-color: @mocha_lavender !important;
+}

@@ -1,0 +1,115 @@
+[
+    {
+        "context": "Workspace",
+        "bindings": {
+            // Move between docks and toggle them
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-j": "workspace::ActivatePaneDown",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-shift-h": "workspace::ToggleLeftDock",
+            "ctrl-shift-j": "workspace::ToggleBottomDock",
+            "ctrl-shift-l": "workspace::ToggleRightDock",
+
+            // Keymaps for opening specific docks
+            "ctrl-shift-g": "git_panel::ToggleFocus",
+            "ctrl-shift-o": "outline_panel::ToggleFocus",
+            "ctrl-shift-p": "project_panel::ToggleFocus",
+            "ctrl-shift-t": "workspace::NewTerminal",
+            "ctrl-shift-a": "agent::ToggleFocus",
+
+            // Zoom in/out
+            "ctrl-shift-z": "workspace::ToggleZoom",
+
+            // Project diagnostics
+            "ctrl-shift-d": "diagnostics::Deploy"
+        }
+    },
+    {
+        "context": "Editor",
+        "bindings": {
+            // Move between docks and toggle them (also here to override default bindings in editor)
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-j": "workspace::ActivatePaneDown",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-shift-h": "workspace::ToggleLeftDock",
+            "ctrl-shift-j": "workspace::ToggleBottomDock",
+            "ctrl-shift-l": "workspace::ToggleRightDock",
+
+            // Keymaps for opening specific docks
+            "ctrl-shift-g": "git_panel::ToggleFocus",
+            "ctrl-shift-o": "outline_panel::ToggleFocus",
+            "ctrl-shift-p": "project_panel::ToggleFocus",
+            "ctrl-shift-t": "workspace::NewTerminal",
+            "ctrl-shift-a": "agent::ToggleFocus",
+
+            // Zoom in/out
+            "ctrl-shift-z": "workspace::ToggleZoom",
+
+            // Project diagnostics
+            "ctrl-shift-d": "diagnostics::Deploy"
+        }
+    },
+    {
+        "context": "Editor && VimControl && !menu && !VimWaiting",
+        "bindings": {
+            // LSP keymaps
+            "space l h": "editor::Hover",
+            "space l f": "editor::Format",
+            "space l a": "editor::ToggleCodeActions",
+            "space l r": "editor::Rename",
+            "space l d": "editor::GoToDefinition",
+            "space l D": "editor::GoToDefinitionSplit",
+            "space l n": "editor::GoToPreviousDiagnostic",
+            "space l m": "editor::GoToDiagnostic",
+
+            // Finder keymaps (telescope like)
+            "space f f": "file_finder::Toggle",
+            "space f t": "tab_switcher::Toggle",
+            "space f o": "outline::Toggle",
+            "space f O": "project_symbols::Toggle",
+
+            // Move between tabs/buffers
+            "space b m": "pane::ActivateNextItem",
+            "space b n": "pane::ActivatePreviousItem",
+            "space b d": "pane::CloseActiveItem",
+
+            // Extra keymaps
+            "space a e": "assistant::InlineAssist",
+            "ctrl-y": "agent::Keep",
+            "ctrl-shift-y": "agent::KeepAll",
+            "space c l": "editor::ToggleComments"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {
+            // Keymaps for completions
+            "ctrl-j": "editor::AcceptEditPrediction",
+            "ctrl-l": "editor::AcceptPartialEditPrediction"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == visual && !menu && !VimWaiting",
+        "bindings": {
+            // Ask about selected text to AI
+            "space a a": "assistant::QuoteSelection",
+
+            // Add documentation using AI
+            "space a d p": [
+                "assistant::InlineAssist",
+                {
+                    "prompt": "Add documentation, or update the existing ones, to the functions and classes. Use the sphinx format."
+                }
+            ]
+        }
+    },
+    {
+        "context": "Editor && vim_mode == normal && !menu && !VimWaiting",
+        "bindings": {
+            // Ask to AI
+            "space a a": "agent::ToggleFocus"
+        }
+    }
+]
