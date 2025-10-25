@@ -7,9 +7,6 @@ $env.config = {
 # Set starship
 use ~/.cache/starship/init.nu
 
-# Start tmux in the initialization
-# tmux new-session -A -s main
-
 # Set some aliases
 # def cosmo [file] {apptainer exec ~/ImagesD/Cosmo/cosmo.sif python3 $file}
 
