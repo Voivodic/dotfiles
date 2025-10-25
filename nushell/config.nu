@@ -8,8 +8,9 @@ $env.config = {
 use ~/.cache/starship/init.nu
 
 # Set some aliases
-alias nixup = sudo nixos-rebuild switch --flake ~/.config/nix --upgrade
-alias hmup = home-manager switch --flake ~/.config/nix --upgrade
+alias nix-up = sudo nixos-rebuild switch --flake ~/.config/nix --upgrade
+alias hm-up = home-manager switch --flake ~/.config/nix --upgrade
+alias nix-clean = sudo nix-collect-garbage -d
 # def cosmo [file] {apptainer exec ~/ImagesD/Cosmo/cosmo.sif python3 $file}
 
 # Alias for zed
