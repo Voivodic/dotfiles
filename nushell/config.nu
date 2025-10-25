@@ -8,7 +8,7 @@ $env.config = {
 use ~/.cache/starship/init.nu
 
 # Set some aliases
-alias nixup = nixos-rebuild switch --flake ~/.config/nix --upgrade
+alias nixup = sudo nixos-rebuild switch --flake ~/.config/nix --upgrade
 alias hmup = home-manager switch --flake ~/.config/nix --upgrade
 # def cosmo [file] {apptainer exec ~/ImagesD/Cosmo/cosmo.sif python3 $file}
 
