@@ -170,7 +170,7 @@
         "edit_prediction_provider": "supermaven"
     },
     "agent": {
-        "always_allow_tool_actions": true,
+        "always_allow_tool_actions": false,
         "default_profile": "ask",
         "default_model": {
             "provider": "google",
@@ -207,6 +207,21 @@
                 "-y",
                 "@modelcontextprotocol/server-sequential-thinking"
             ]
+        }
+    },
+
+    ////////////
+    // Agents //
+    ////////////
+
+    "agent_servers": {
+        "gemini": {
+            "ignore_system_version": false
+        },
+        "qwen": {
+            "command": "qwen",
+            "args": ["--experimental-acp"],
+            "env": {}
         }
     }
 }
