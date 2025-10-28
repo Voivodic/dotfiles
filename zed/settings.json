@@ -78,19 +78,7 @@
         "Python": {
             "language_servers": ["pyright", "ruff"],
             "format_on_save": "off",
-            "formatter": [
-                {
-                    "code_actions": {
-                        "source.organizeImports.ruff": false,
-                        "source.fixAll.ruff": true
-                    }
-                },
-                {
-                    "language_server": {
-                        "name": "ruff"
-                    }
-                }
-            ]
+            "formatter": "auto"
         }
     },
 
@@ -169,24 +157,49 @@
     "features": {
         "edit_prediction_provider": "supermaven"
     },
-    "agent": {
-        "always_allow_tool_actions": false,
-        "default_profile": "ask",
-        "default_model": {
-            "provider": "google",
-            "model": "gemini-2.5-flash"
-        },
-        "inline_assistant_model": {
-            "provider": "google",
-            "model": "gemini-2.5-flash"
-        },
-        "commit_message_model": {
-            "provider": "google",
-            "model": "gemini-2.5-flash-lite-preview-06-17"
-        },
-        "thread_summary_model": {
-            "provider": "google",
-            "model": "gemini-2.5-flash"
+    "language_models": {
+        "openai_compatible": {
+            "Zai": {
+                "api_url": "https://api.z.ai/api/coding/paas/v4",
+                "available_models": [
+                    {
+                        "name": "glm-4.6",
+                        "display_name": "GLM-4.6",
+                        "max_tokens": 200000,
+                        "max_output_tokens": 128000,
+                        "capabilities": {
+                            "tools": true,
+                            "images": false,
+                            "parallel_tool_calls": true,
+                            "prompt_cache_key": false
+                        }
+                    },
+                    {
+                        "name": "glm-4.5",
+                        "display_name": "GLM-4.5",
+                        "max_tokens": 128000,
+                        "max_output_tokens": 64000,
+                        "capabilities": {
+                            "tools": true,
+                            "images": false,
+                            "parallel_tool_calls": true,
+                            "prompt_cache_key": false
+                        }
+                    },
+                    {
+                        "name": "glm-4.5-air",
+                        "display_name": "GLM-4.5-Air",
+                        "max_tokens": 128000,
+                        "max_output_tokens": 64000,
+                        "capabilities": {
+                            "tools": true,
+                            "images": false,
+                            "parallel_tool_calls": true,
+                            "prompt_cache_key": false
+                        }
+                    }
+                ]
+            }
         }
     },
 
@@ -207,6 +220,11 @@
                 "-y",
                 "@modelcontextprotocol/server-sequential-thinking"
             ]
+        },
+        "tavily": {
+            "source": "custom",
+            "command": "npx",
+            "args": ["-y", "tavily-mcp@latest"]
         }
     },
 
@@ -214,6 +232,26 @@
     // Agents //
     ////////////
 
+    "agent": {
+        "always_allow_tool_actions": false,
+        "default_profile": "ask",
+        "default_model": {
+            "provider": "google",
+            "model": "gemini-2.5-flash"
+        },
+        "inline_assistant_model": {
+            "provider": "google",
+            "model": "gemini-2.5-flash"
+        },
+        "commit_message_model": {
+            "provider": "google",
+            "model": "gemini-2.5-flash-lite-preview-06-17"
+        },
+        "thread_summary_model": {
+            "provider": "google",
+            "model": "gemini-2.5-flash"
+        }
+    },
     "agent_servers": {
         "gemini": {
             "ignore_system_version": false
