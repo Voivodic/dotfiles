@@ -58,7 +58,7 @@
         # LLM in terminal
         gemini-cli
         qwen-code
-        crush
+        opencode
 
         # For managing containers
         podman
