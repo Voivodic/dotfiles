@@ -19,7 +19,7 @@
         "tavily": {
             "enabled": true,
             "type": "local",
-            "command": ["npc", "-y", "tavily-mcp@latest"]
+            "command": ["npx", "-y", "tavily-mcp@latest"]
         }
     }
 }
