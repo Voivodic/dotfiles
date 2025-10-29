@@ -62,6 +62,9 @@ if [ "$ENV_TYPE" = "personal" ]; then
     echo -e "Creating configuration folders...\n"
     mkdir -p $HOME/.config
     mkdir -p $HOME/.ssh
+    mkdir -p $HOME/.gemini
+    mkdir -p $HOME/.qwen
+    mkdir -p $HOME/.config/opencode
 
     # Remove the existing directory with configurations
     echo -e "Removing existing configurations...\n"
@@ -76,6 +79,9 @@ if [ "$ENV_TYPE" = "personal" ]; then
     ln -sf $PWD/bashrc $HOME/.bashrc  
     ln -sf $PWD/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh
+    ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
+    ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
+    ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
     ln -s $PWD/nushell $HOME/.config
     ln -s $PWD/nvim $HOME/.config 
     ln -s $PWD/nix $HOME/.config
@@ -122,6 +128,9 @@ elif [ "$ENV_TYPE" = "vps" ]; then
     echo -e "Creating configuration folders...\n"
     mkdir -p $HOME/.config
     mkdir -p $HOME/.ssh
+    mkdir -p $HOME/.gemini
+    mkdir -p $HOME/.qwen
+    mkdir -p $HOME/.config/opencode
 
     # Remove the existing directory with configurations
     echo -e "Removing existing configurations...\n"
@@ -135,7 +144,10 @@ elif [ "$ENV_TYPE" = "vps" ]; then
     ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
     ln -sf $PWD/bashrc $HOME/.bashrc  
     ln -sf $PWD/profile $HOME/.profile
-    ln -sf $PWD/ssh/config $HOME/.ssh
+    ln -sf $PWD/ssh/config $HOME/.ssh 
+    ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
+    ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
+    ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
     ln -s $PWD/nushell $HOME/.config
     ln -s $PWD/nvim $HOME/.config
     ln -s $PWD/nix $HOME/.config

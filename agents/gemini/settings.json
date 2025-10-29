@@ -1,0 +1,38 @@
+{
+    "general": {
+        "vimMode": true,
+        "preferredEditor": "zeditor",
+        "disableAutoUpdate": true
+    },
+    "ui": {
+        "theme": "GitHub"
+    },
+    "context": {
+        "fileName": "AGENTS.md"
+    },
+    "mcpServers": {
+        "sequential-thinking": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sequential-thinking"
+            ]
+        },
+        "context7": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp"
+            ]
+        },
+        "tavily": {
+            "command": "npx",
+            "args": ["-y", "tavily-mcp@latest"]
+        }
+    },
+    "security": {
+        "auth": {
+            "selectedType": "oauth-personal"
+        }
+    }
+}
