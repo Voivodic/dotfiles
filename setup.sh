@@ -82,19 +82,9 @@ if [ "$ENV_TYPE" = "personal" ]; then
     ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
-    ln -s $PWD/nushell $HOME/.config
-    ln -s $PWD/nvim $HOME/.config 
-    ln -s $PWD/nix $HOME/.config
-    ln -s $PWD/ghostty $HOME/.config
-    ln -s $PWD/hyprland/hypr $HOME/.config
-    ln -s $PWD/hyprland/swaync $HOME/.config
-    ln -s $PWD/themes $HOME/.config
-    ln -s $PWD/hyprland/wal $HOME/.config
-    ln -s $PWD/hyprland/waybar $HOME/.config
-    ln -s $PWD/hyprland/waypaper $HOME/.config
-    ln -s $PWD/hyprland/wlogout $HOME/.config
-    ln -s $PWD/hyprland/wofi $HOME/.config
-    ln -s $PWD/zed $HOME/.config
+    for dir in nushell nvim nix ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed; do
+        ln -s $PWD/$dir $HOME/.config
+    done
 
     # Run nixos-rebuild
     echo -e "Downloading all packages and configuring the system...\n"
@@ -148,9 +138,9 @@ elif [ "$ENV_TYPE" = "vps" ]; then
     ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
-    ln -s $PWD/nushell $HOME/.config
-    ln -s $PWD/nvim $HOME/.config
-    ln -s $PWD/nix $HOME/.config
+    for dir in nushell nvim nix; do
+        ln -s $PWD/$dir $HOME/.config
+    done
 
     # Install home-manager CLI
     if ! command -v home-manager >/dev/null 2>&1; then
