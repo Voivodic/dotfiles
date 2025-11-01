@@ -11,6 +11,8 @@ use ~/.cache/starship/init.nu
 alias nix-up = sudo nixos-rebuild switch --flake ~/.config/nix --upgrade
 alias hm-up = home-manager switch --flake ~/.config/nix --upgrade
 alias nix-clean = sudo nix-collect-garbage -d
+alias pod-up = podman-compose up
+alias pod-down = podman-compose down
 # def cosmo [file] {apptainer exec ~/ImagesD/Cosmo/cosmo.sif python3 $file}
 
 # Alias for zed
