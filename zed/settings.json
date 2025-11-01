@@ -234,10 +234,10 @@
 
     "agent": {
         "always_allow_tool_actions": false,
-        "default_profile": "ask",
+        "default_profile": "write",
         "default_model": {
-            "provider": "google",
-            "model": "gemini-2.5-flash"
+            "provider": "Zai",
+            "model": "glm-4.6"
         },
         "inline_assistant_model": {
             "provider": "google",
