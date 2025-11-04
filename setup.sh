@@ -88,7 +88,7 @@ if [ "$ENV_TYPE" = "personal" ]; then
 
     # Run nixos-rebuild
     echo -e "Downloading all packages and configuring the system...\n"
-    sudo nixos-rebuild switch --flake $HOME/.config/nix --upgrade
+    sudo nixos-rebuild switch --flake $HOME/.config/nix#nixos
 
     # Sourcing hyprland
     echo -e "Sourcing hyprland...\n"
@@ -155,7 +155,7 @@ elif [ "$ENV_TYPE" = "vps" ]; then
 
     # Run home-manager
     echo -e "Downloading all packages and configuring the user ...\n"
-    home-manager switch --flake $HOME/.config/nix --upgrade
+    home-manager switch --flake $HOME/.config/nix#voivodic
 
     # Manage tpm (Tmux Plugin Manager)
     TPM_DIR="$HOME/.tmux/plugins/tpm"

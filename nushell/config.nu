@@ -8,8 +8,9 @@ $env.config = {
 use ~/.cache/starship/init.nu
 
 # Set some aliases
-alias nix-up = sudo nixos-rebuild switch --flake ~/.config/nix --upgrade
-alias hm-up = home-manager switch --flake ~/.config/nix --upgrade
+alias nix-update = nix flake update --flake ~/.config/nix
+alias nix-upgrade = sudo nixos-rebuild switch --flake ~/.config/nix#nixos
+alias hm-upgrade = home-manager switch --flake ~/.config/nix#voivodic
 alias nix-clean = sudo nix-collect-garbage -d
 alias pod-up = podman-compose up
 alias pod-down = podman-compose down
