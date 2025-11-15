@@ -4,7 +4,7 @@
     # This is the list of packages you want to install FOR YOUR USER.
     # We are moving this from your old configuration.nix
     home.packages = with pkgs; [
-         # Some useful CLIs
+        # Some useful CLIs
         git
         wget
         curl
@@ -12,7 +12,10 @@
         lshw
         gnumake
         cmake
-        lm_sensors
+        gnused
+        gnutar
+        gnugrep
+        gzip
 
         # Install the main packages
         neovim
@@ -23,7 +26,6 @@
         tmux
         starship
         tree
-        zed-editor
 
         # Install some languages
         python313
@@ -68,9 +70,6 @@
         # For showing information about the system
         neofetch
 
-        # The fonts used
-        nerd-fonts.droid-sans-mono
-        font-awesome
     ];
 
     # Let Home Manager manage itself

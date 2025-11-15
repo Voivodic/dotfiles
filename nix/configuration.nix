@@ -157,13 +157,14 @@
 
         # For input devices
         libinput
+        lm_sensors
 
         # For vulkan
         libGL
-        pkgs.mesa
-        pkgs.vulkan-loader
-        pkgs.vulkan-tools
-        pkgs.vulkan-validation-layers
+        mesa
+        vulkan-loader
+        vulkan-tools
+        vulkan-validation-layers
 
         # Cursor
         hyprcursor
@@ -201,6 +202,9 @@
         # Terminal
         ghostty
 
+        # Zed editor
+        zed-editor
+
         # Launcher
         wofi 
 
@@ -235,6 +239,10 @@
         godot_4
         glfw
         bottles
+
+        # The fonts used
+        nerd-fonts.droid-sans-mono
+        font-awesome
     ];
 
     # ... (keep fonts, services, stateVersion, etc.)
