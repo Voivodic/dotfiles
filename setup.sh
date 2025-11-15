@@ -200,7 +200,7 @@ elif [ "$ENV_TYPE" = "termux" ]; then
         ln -s $PWD/$dir $HOME/.config
     done
 
-    # Run home-manager
+    # Run nix-on-droid
     echo -e "Downloading all packages and configuring the user ...\n"
     nix-on-droid switch --flake $HOME/.config/nix-on-droid#.
 
