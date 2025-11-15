@@ -16,6 +16,8 @@
         gnutar
         gnugrep
         gzip
+        gawk
+        openssh
 
         # Install the main packages
         neovim
