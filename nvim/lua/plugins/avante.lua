@@ -50,17 +50,14 @@ return {
     config = function()
         vim.opt.laststatus = 3
         require("avante").setup({
-            mode = "legacy",
-            provider = "gemini_flash",
+            instructions_file = "AGENTS.md",
+            mode = "agentic",
+            provider = "glm_46",
             cursor_applying_provider = "gemini_flash_lite",
             behaviour = {
                 enable_cursor_planning_mode = true,
             },
             providers = {
-                ollama = {
-                    endpoint = "https://eminent-superb-elephant.ngrok-free.app",
-                    model = "deepcoder:14b"
-                }, 
                 gemini_flash = {
                     __inherited_from = "gemini",
                     model = "gemini-2.5-flash",
@@ -75,6 +72,18 @@ return {
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "mistralai/devstral-small:free",
                 },
+                glm_46 = {
+                    __inherited_from = "openai",
+                    endpoint = "https://api.z.ai/api/coding/paas/v4",
+                    api_key_name = "ZAI_API_KEY",
+                    model = "GLM-4.6",
+                },
+                glm_45_air = {
+                    __inherited_from = "openai",
+                    endpoint = "https://api.z.ai/api/coding/paas/v4",
+                    api_key_name = "ZAI_API_KEY",
+                    model = "GLM-4.5-air",
+                },
                 deepseekR1 = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
@@ -87,13 +96,6 @@ return {
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "deepseek/deepseek-chat-v3-0324:free",
-                },
-                kimi = {
-                    __inherited_from = "openai",
-                    endpoint = "https://openrouter.ai/api/v1",
-                    api_key_name = "OPENROUTER_API_KEY",
-                    model = "moonshotai/kimi-dev-72b:free",
-                    disable_tools = true,
                 },
            },
 
