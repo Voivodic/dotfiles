@@ -193,6 +193,7 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/bashrc $HOME/.bashrc  
     ln -sf $PWD/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh 
+    ln -sf $PWD/nix/home.nix $HOME/.config/nix-on-droid
     ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
