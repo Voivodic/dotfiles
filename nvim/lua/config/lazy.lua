@@ -30,7 +30,7 @@ require("lazy").setup({
     { "yetone/avante.nvim", enabled = true },
     { "lewis6991/hover.nvim", enabled = true },
     { "olimorris/codecompanion.nvim", enabled = false },
-    { "ravitemer/mcphub.nvim", enabled = true },
+    { "ravitemer/mcphub.nvim", enabled = false },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
