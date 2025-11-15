@@ -1,3 +1,6 @@
+# Start nushell
+exec $HOME/.nix-profile/bin/nu
+
 # Source Nix profile if on a non-NixOS system (e.g., standalone Home Manager)
 if [ ! -f /etc/NIXOS ]; then
     if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
