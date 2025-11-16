@@ -182,7 +182,7 @@ elif [ "$ENV_TYPE" = "termux" ]; then
 
     # Remove the existing directory with configurations
     echo -e "Removing existing configurations...\n"
-    for dir in nushell nvim; do
+    for dir in nushell nvim termux nix-on-droid; do
         rm -rf $HOME/.config/$dir
     done
 
@@ -191,15 +191,16 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/starship/starship.toml $HOME/.config
     ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
     ln -sf $PWD/bashrc $HOME/.bashrc  
-    ln -sf $PWD/profile $HOME/.profile
+    ln -sf $PWD/profile_termux $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh 
-    ln -sf $PWD/nix/home.nix $HOME/.config/nix-on-droid
     ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
-    for dir in nushell nvim; do
+    for dir in nushell nvim nix-on-droid; do
         ln -s $PWD/$dir $HOME/.config
     done
+    ln -sf $PWD/nix/home.nix $HOME/.config/nix-on-droid
+    ln -sf $PWD/termux/ $HOME/.termux
 
     # Run nix-on-droid
     echo -e "Downloading all packages and configuring the user ...\n"
