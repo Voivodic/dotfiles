@@ -31,7 +31,7 @@
     networking.hostName = "nixos";
     networking.networkmanager.enable = true;
 
-    time.timeZone = "America/Sao_Paulo";
+    time.timeZone = "America/Chicago";
 
     # Enable hyperland
     programs.hyprland = {
@@ -68,12 +68,21 @@
     # Options to set how to change between GPU and CPU's graphics
     hardware.nvidia.prime = {
         # Set the to change between the gpus
-        sync.enable = true;
+        sync.enable = false;
+
+        # Enable Offload Mode for manually managing the GPU
+        offload = {
+            enable = true;
+            enableOffloadCmd = true; # Provides the 'nvidia-offload' command
+        };
 
         # BUS ID for the cpu's GPU and the nvidia's GPU
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:43:0:0";
     };
+
+    # Enable gamemode for better performance
+    programs.gamemode.enable = true;
 
     #XDG portal
     xdg.portal.enable = true;
@@ -131,7 +140,14 @@
     nixpkgs.config.allowUnfree = true;
 
     # Enable steam
-    programs.steam.enable = true;
+    programs.steam = {
+        enable = true;
+        package = pkgs.steam.override {
+            extraPkgs = pkgs: with pkgs; [
+                gamemode
+            ];
+        };
+    };
 
     # Enable appimages
     programs.appimage.enable = true;
@@ -142,7 +158,7 @@
     users.users.voivodic = {
         isNormalUser = true;
         description = "Voivodic";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" "gamemode" ];
         # The shell is now managed by Home Manager, but it's good to have a fallback.
         shell = pkgs.nushell;
         # REMOVED: The entire 'packages' list has been moved to home.nix
