@@ -5,7 +5,7 @@
 @define-color mocha_flamingo #f2cdcd;
 * {
     font-size:15px;
-    font-family: "CodeNewRoman Nerd Font Propo";
+    font-family: "DroidSansMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif;
     padding: 0px;
     margin: 0px;
 }
@@ -99,7 +99,7 @@ tooltip {
 
 }
 #network{
-    padding: 0px 5px;
+    padding: 0px 7px;
     transition: all .3s ease;
     color:@mocha_lavender;
 

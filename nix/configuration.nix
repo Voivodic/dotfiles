@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
     imports = [ ./hardware-configuration.nix ];
@@ -19,14 +19,22 @@
    
     nix.settings = {
         max-jobs = 1;
-        cores = 4;
+        cores = 16;
         experimental-features = [ "nix-command" "flakes" ];
         auto-optimise-store = true;
         trusted-users = [ "root" "voivodic" ];
     };
 
-    boot.loader.systemd-boot.enable = true;
+    # For the bootloader
+    #boot.loader.systemd-boot.enable = false;
     boot.loader.efi.canTouchEfiVariables = true;
+
+    # For the secure boot
+    boot.loader.systemd-boot.enable = lib.mkForce false;
+    boot.lanzaboote = {
+        enable = true;
+        pkiBundle = "/var/lib/sbctl";
+    };
 
     networking.hostName = "nixos";
     networking.networkmanager.enable = true;
@@ -60,9 +68,9 @@
         modesetting.enable = true;
         powerManagement.enable = false;
         powerManagement.finegrained = false;
-        open = false;
+        open = true;
         nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
 
     # Options to set how to change between GPU and CPU's graphics
@@ -78,7 +86,7 @@
 
         # BUS ID for the cpu's GPU and the nvidia's GPU
         intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:43:0:0";
+        nvidiaBusId = "PCI:2:0:0";
     };
 
     # Enable gamemode for better performance
@@ -139,16 +147,6 @@
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
-    # Enable steam
-    programs.steam = {
-        enable = true;
-        package = pkgs.steam.override {
-            extraPkgs = pkgs: with pkgs; [
-                gamemode
-            ];
-        };
-    };
-
     # Enable appimages
     programs.appimage.enable = true;
     programs.appimage.binfmt = true;
@@ -174,6 +172,9 @@
         # For input devices
         libinput
         lm_sensors
+
+        # For generation of keys for secure boot
+        sbctl
 
         # For vulkan
         libGL
@@ -215,6 +216,9 @@
         waypaper
         jq
 
+        # Control the screen brightness
+        brightnessctl
+
         # Terminal
         ghostty
 
@@ -255,8 +259,10 @@
         godot_4
         glfw
         bottles
+    ];
 
-        # The fonts used
+    # Set the fonts
+    fonts.fonts = with pkgs; [
         nerd-fonts.droid-sans-mono
         font-awesome
     ];
