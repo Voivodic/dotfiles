@@ -8,9 +8,13 @@
         # Home Manager
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+        # Lanzaboote for setting up the secure boot
+        lanzaboote.url = "github:nix-community/lanzaboote/v0.4.3";
+        lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }: 
+    outputs = { self, nixpkgs, home-manager, lanzaboote, ... }: 
         let
             username = "voivodic";
         in {
@@ -25,6 +29,7 @@
                         home-manager.useUserPackages = true;
                         home-manager.users.voivodic = import ./home.nix;
                     }
+                    lanzaboote.nixosModules.lanzaboote
                 ];
             };
 
