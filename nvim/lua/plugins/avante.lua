@@ -103,7 +103,7 @@ return {
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "deepseek/deepseek-chat-v3-0324:free",
                 },
-           },
+            },
 
           -- Diasble some tools because of the conflicts with mcphub
            -- disabled_tools = {
