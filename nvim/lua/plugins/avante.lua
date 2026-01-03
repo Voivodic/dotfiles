@@ -52,7 +52,7 @@ return {
         require("avante").setup({
             instructions_file = "AGENTS.md",
             mode = "agentic",
-            provider = "glm_46",
+            provider = "glm_47",
             cursor_applying_provider = "gemini_flash_lite",
             behaviour = {
                 enable_cursor_planning_mode = true,
@@ -71,6 +71,12 @@ return {
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "mistralai/devstral-small:free",
+                },
+                glm_47 = {
+                    __inherited_from = "openai",
+                    endpoint = "https://api.z.ai/api/coding/paas/v4",
+                    api_key_name = "ZAI_API_KEY",
+                    model = "GLM-4.7",
                 },
                 glm_46 = {
                     __inherited_from = "openai",
