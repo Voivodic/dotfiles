@@ -83,6 +83,21 @@
     # Enable the fonts
     fonts.fontconfig.enable = true;
 
+    # Enable pullingn images from Docker Hub
+    home.file.".config/containers/policy.json".text = ''
+        {
+          "default": [
+            { "type": "reject" }
+          ],
+          "transports": {
+            "docker": {
+              "docker.io": [
+                { "type": "insecureAcceptAnything" }
+              ]
+            }
+          }
+        }
+    '';
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
