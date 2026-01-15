@@ -6,13 +6,13 @@
     "icon_theme": "Catppuccin Mocha",
     "vim_mode": true,
     "restore_on_startup": "last_workspace",
-    "ui_font_size": 14,
-    "buffer_font_size": 12,
+    "ui_font_size": 16,
+    "buffer_font_size": 14,
     "tab_size": 4,
     "soft_wrap": "editor_width",
     "buffer_font_family": "JetBrainsMono Nerd Font",
     "cursor_blink": false,
-    "relative_line_numbers": true,
+    "relative_line_numbers": "enabled",
     "current_line_highlight": "gutter",
     "scrollbar": {
         "show": "never"
@@ -221,12 +221,10 @@
 
     "context_servers": {
         "Context7": {
-            "source": "custom",
             "command": "npx",
             "args": ["-y", "@upstash/context7-mcp"]
         },
         "sequential-thinking": {
-            "source": "custom",
             "command": "npx",
             "args": [
                 "-y",
@@ -234,7 +232,6 @@
             ]
         },
         "tavily": {
-            "source": "custom",
             "command": "npx",
             "args": ["-y", "tavily-mcp@latest"]
         }
@@ -245,10 +242,7 @@
     ////////////
 
     "agent": {
-        "default_model": {
-            "provider": "Zai",
-            "model": "glm-4.7"
-        },
+        "default_profile": "write",
         "model_parameters": []
     },
     "agent_servers": {
@@ -256,6 +250,7 @@
             "ignore_system_version": false
         },
         "qwen": {
+            "type": "custom",
             "command": "qwen",
             "args": ["--experimental-acp"],
             "env": {}
