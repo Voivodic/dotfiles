@@ -25,6 +25,9 @@
         trusted-users = [ "root" "voivodic" ];
     };
 
+    # Used to recognize the keyboard
+    boot.kernelModules = [ "ideapad_laptop" ];
+
     # For the bootloader
     #boot.loader.systemd-boot.enable = false;
     boot.loader.efi.canTouchEfiVariables = true;
