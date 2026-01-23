@@ -200,6 +200,8 @@ elif [ "$ENV_TYPE" = "termux" ]; then
         ln -s $PWD/$dir $HOME/.config
     done
     ln -sf $PWD/nix/home.nix $HOME/.config/nix-on-droid
+    ln -sf $PWD/nix/flake.lock $HOME/.config/nix-on-droid
+    ln -sf $PWD/nix/config.nu $HOME/.config/nushell
     ln -sf $PWD/termux/ $HOME/.termux
 
     # Run nix-on-droid
