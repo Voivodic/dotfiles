@@ -203,7 +203,6 @@ elif [ "$ENV_TYPE" = "termux" ]; then
 
     # Run nix-on-droid
     echo -e "Downloading all packages and configuring the user ...\n"
-    nix flake update --flake $HOME/.config/nix
     nix-on-droid switch --flake $HOME/.config/nix
 
     # Manage tpm (Tmux Plugin Manager)
