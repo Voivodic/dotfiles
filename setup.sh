@@ -8,7 +8,7 @@ while [[ "$#" -gt 0 ]]; do
                 ENV_TYPE="$2"
                 shift
             else
-                echo -e "Error: --env requires an argument (personal or vps).\n"
+                echo -e "Error: --env requires an argument (personal, vps or termux).\n"
                 exit 1
             fi
             ;;
