@@ -18,6 +18,7 @@
         gzip
         gawk
         openssh
+        findutils
 
         # Install the main packages
         neovim
