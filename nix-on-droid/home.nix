@@ -62,7 +62,7 @@
         # LLM in terminal
         gemini-cli
         qwen-code
-        opencode
+        # opencode
 
         # For managing containers
         podman
