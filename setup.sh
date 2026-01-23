@@ -196,12 +196,13 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
-    for dir in nushell nvim nix-on-droid; do
-        ln -s $PWD/$dir $HOME/.config
-    done
+    ln -sf $PWD/nvim $HOME/.config
+    ln -sf $PWD/nushell/env.nu $HOME/.config/nushell
+    ln -sf $PWD/nix-on-droid/config.nu $HOME/.config/nushell
     ln -sf $PWD/nix/home.nix $HOME/.config/nix-on-droid
     ln -sf $PWD/nix/flake.lock $HOME/.config/nix-on-droid
-    ln -sf $PWD/nix/config.nu $HOME/.config/nushell
+    ln -sf $PWD/nix-on-droid/flake.nix $HOME/.config/nix-on-droid
+    ln -sf $PWD/nix-on-droid/nix-on-droid.nix $HOME/.config/nix-on-droid
     ln -sf $PWD/termux/ $HOME/.termux
 
     # Run nix-on-droid
