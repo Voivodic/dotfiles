@@ -21,9 +21,6 @@
   # Set your time zone
   #time.timeZone = "Europe/Berlin";
 
-  # Install sudo
-  security.sudo.enable = true;
-
   # Configure home-manager
   home-manager = {
     config = ./home.nix;

@@ -170,7 +170,7 @@ elif [ "$ENV_TYPE" = "vps" ]; then
 
 # Setup for termux using nix-on-droid
 elif [ "$ENV_TYPE" = "termux" ]; then
-    echo -e "Running termus setup...\n"
+    echo -e "Running termux setup...\n"
 
     # Create the configuration foldes (if not present)
     echo -e "Creating configuration folders...\n"
@@ -182,7 +182,7 @@ elif [ "$ENV_TYPE" = "termux" ]; then
 
     # Remove the existing directory with configurations
     echo -e "Removing existing configurations...\n"
-    for dir in nushell nvim termux nix-on-droid; do
+    for dir in nushell nix nvim termux; do
         rm -rf $HOME/.config/$dir
     done
 
@@ -197,17 +197,14 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
     ln -sf $PWD/nvim $HOME/.config
-    ln -sf $PWD/nushell/env.nu $HOME/.config/nushell
-    ln -sf $PWD/nix-on-droid/config.nu $HOME/.config/nushell
-    ln -sf $PWD/nix/home.nix $HOME/.config/nix-on-droid
-    ln -sf $PWD/nix/flake.lock $HOME/.config/nix-on-droid
-    ln -sf $PWD/nix-on-droid/flake.nix $HOME/.config/nix-on-droid
-    ln -sf $PWD/nix-on-droid/nix-on-droid.nix $HOME/.config/nix-on-droid
+    ln -sf $PWD/nushell $HOME/.config
+    ln -sf $PWD/nix-on-droid $HOME/.config/nix
     ln -sf $PWD/termux/ $HOME/.termux
 
     # Run nix-on-droid
     echo -e "Downloading all packages and configuring the user ...\n"
-    nix-on-droid switch --flake $HOME/.config/nix-on-droid#.
+    nix flake update --flake $HOME/.config/nix
+    nix-on-droid switch --flake $HOME/.config/nix
 
     # Manage tpm (Tmux Plugin Manager)
     TPM_DIR="$HOME/.tmux/plugins/tpm"
