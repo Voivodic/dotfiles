@@ -9,6 +9,7 @@
         wget
         curl
         htop
+        nvitop
         lshw
         gnumake
         cmake
