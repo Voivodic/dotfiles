@@ -258,10 +258,16 @@
         spotify
         zoom-us
 
+        # Cuda for GPU acceleration
+        cudaPackages.cudatoolkit
+
         # Stuff for games
         godot_4
         glfw
         bottles
+
+        # Lllama.cpp for local LLMs
+        (llama-cpp.override { cudaSupport = true; })
     ];
 
     # Set the fonts
