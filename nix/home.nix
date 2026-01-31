@@ -48,6 +48,7 @@
         ruff
         clang-tools
         zls
+        gopls
         nixd
         ltex-ls-plus
         texlab
@@ -56,9 +57,6 @@
         cppcheck
         codespell
         rstcheckWithSphinx
-
-        # Ollama for running LLMs
-        ollama
 
         # LLM in terminal
         gemini-cli
@@ -72,7 +70,6 @@
 
         # For showing information about the system
         neofetch
-
     ];
 
     # Let Home Manager manage itself
