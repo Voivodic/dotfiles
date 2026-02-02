@@ -21,6 +21,9 @@ return {
         vim.lsp.config("nixd", {
             capabilities = capabilities,
         })
+        vim.lsp.config("gopls", {
+            capabilities = capabilities,
+        })
         vim.lsp.config("texlab", {
             capabilities = capabilities,
         })
