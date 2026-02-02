@@ -260,6 +260,7 @@
 
         # Cuda for GPU acceleration
         cudaPackages.cudatoolkit
+        cudaPackages.cudnn
 
         # Stuff for games
         godot_4
