@@ -133,6 +133,12 @@
         jack.enable = true;
     };
 
+    # Enable ssh access from tablet/cellphone
+    services.tailscale = {
+        enable = true;
+        useRoutingFeatures = "client";
+    };
+
     # Configure keymap in X11
     services.xserver.xkb = {
         layout = "br";
