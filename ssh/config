@@ -7,7 +7,7 @@ Host atlas248
     User voivodic
     # ProxyJump dipc
 
-Host oracle-website
-    HostName 130.110.248.62
+Host oracle
+    HostName 144.24.203.170
     User ubuntu
-    IdentityFile ~/.ssh/oracle_website.key
+    IdentityFile ~/.ssh/oracle.key
