@@ -242,6 +242,14 @@
     ////////////
 
     "agent": {
+        "inline_assistant_model": {
+            "provider": "Zai",
+            "model": "glm-4.7"
+        },
+        "default_model": {
+            "provider": "Zai",
+            "model": "glm-4.7"
+        },
         "default_profile": "write",
         "model_parameters": []
     },
