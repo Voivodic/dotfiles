@@ -39,9 +39,11 @@
         pkiBundle = "/var/lib/sbctl";
     };
 
+    # Set the hostname
     networking.hostName = "nixos";
     networking.networkmanager.enable = true;
 
+    # Set the timezone
     time.timeZone = "America/Chicago";
 
     # Enable hyperland
@@ -63,6 +65,12 @@
         graphics.enable32Bit = true;
     };
     #security.pam.services.hyprlock = {};
+
+    # Keep the system running even if the lid is closed and it is plugged
+    services.logind.settings.Login = {
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "ignore";
+    };
 
     # Set the nvidia GPU
     services.xserver.videoDrivers = ["nvidia"];
@@ -238,7 +246,8 @@
         wofi 
 
         # Browser
-        microsoft-edge
+        # microsoft-edge
+        chromium
 
         # Network management tool
         #networkmanager
