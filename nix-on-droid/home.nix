@@ -37,7 +37,6 @@
         zig
         go
         rustup
-        texliveFull
         nodejs
 
         # Install sphinx for python documentation
