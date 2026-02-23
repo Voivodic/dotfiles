@@ -64,11 +64,6 @@
         qwen-code
         # opencode
 
-        # For managing containers
-        podman
-        podman-compose
-        apptainer
-
         # For showing information about the system
         neofetch
 
