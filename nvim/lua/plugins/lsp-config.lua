@@ -24,6 +24,9 @@ return {
         vim.lsp.config("gopls", {
             capabilities = capabilities,
         })
+        vim.lsp.config("nushell", {
+            capabilities = capabilities,
+        })
         vim.lsp.config("texlab", {
             capabilities = capabilities,
         })
