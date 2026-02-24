@@ -246,8 +246,16 @@
         wofi 
 
         # Browser
+        # Tempororary fix for the microsoft-edge package
+        (pkgs.microsoft-edge.overrideAttrs (old: { 
+            version = "145.0.3800.70"; 
+            src = pkgs.fetchurl { 
+                url = "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_145.0.3800.70-1_amd64.deb"; 
+                sha256 = "sha256-gUyh9AD1ntnZb2iLRwKLxy0PxY0Dist73oT9AC2pFQI=";
+            };
+        }))
         # microsoft-edge
-        chromium
+        # chromium
 
         # Network management tool
         #networkmanager
