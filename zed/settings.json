@@ -3,6 +3,9 @@
     // General //
     /////////////
 
+    "edit_predictions": {
+        "provider": "supermaven"
+    },
     "icon_theme": "Catppuccin Mocha",
     "vim_mode": true,
     "restore_on_startup": "last_workspace",
@@ -154,9 +157,6 @@
     // AI //
     ////////
 
-    "features": {
-        "edit_prediction_provider": "supermaven"
-    },
     "language_models": {
         "openai_compatible": {
             "Zai": {
@@ -250,7 +250,7 @@
             "provider": "Zai",
             "model": "glm-4.7"
         },
-        "default_profile": "write",
+        "default_profile": "ask",
         "model_parameters": []
     },
     "agent_servers": {

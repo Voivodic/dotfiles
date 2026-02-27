@@ -86,8 +86,8 @@
         "context": "Editor && vim_mode == insert",
         "bindings": {
             // Keymaps for completions
-            "ctrl-j": "editor::AcceptEditPrediction",
-            "ctrl-l": "editor::AcceptPartialEditPrediction"
+            "alt-j": "editor::AcceptEditPrediction",
+            "alt-l": "editor::AcceptPartialEditPrediction"
         }
     },
     {
