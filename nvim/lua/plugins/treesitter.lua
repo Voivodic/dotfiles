@@ -16,6 +16,8 @@ return {
                 "zig", 
                 "nix",
                 "yaml",
+                "nu",
+                "templ"
             },
             highlight = {
                 enable = true,
