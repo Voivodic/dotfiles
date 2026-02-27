@@ -78,6 +78,23 @@
     # Set your default shell
     programs.nushell.enable = true;
 
+    # Set some aliases for git
+    programs.git = {
+        enable = true;
+
+        settings = {
+            user.name = "Voivodic";
+            user.email = "rodrigo.voivodic@gmail.com";
+            alias = {
+                co = "checkout";
+                br = "branch";
+                ci = "commit";
+                st = "status";
+                hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short";
+            };
+        };
+    };
+
     # Enable the fonts
     fonts.fontconfig.enable = true;
 
