@@ -67,9 +67,6 @@
         podman
         podman-compose
         apptainer
-
-        # For showing information about the system
-        neofetch
     ];
 
     # Let Home Manager manage itself
