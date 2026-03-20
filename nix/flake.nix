@@ -34,8 +34,6 @@
             };
 
             # The standalone Home Manager configuration for portability
-            # You will use this on Arch Linux or other distros
-
             homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages.x86_64-linux;
                 modules = [ 
