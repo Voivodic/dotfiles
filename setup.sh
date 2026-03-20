@@ -140,9 +140,10 @@ elif [ "$ENV_TYPE" = "vps" ]; then
 
     # Set the nix configurations
     mkdir $HOME/.config/nix
+    mkdir $HOME/.config/nix/hosts
     ln -sf $PWD/nix-general/flake.nix $HOME/.config/nix/flake.nix
     ln -sf $PWD/nix-general/flake.lock $HOME/.config/nix/flake.lock
-    ln -s $PWD/nix-general/hosts/vps $HOME/.config/nix/hosts/vps
+    ln -s $PWD/nix-general/hosts/vps $HOME/.config/nix/hosts
     ln -sf $PWD/nix-general/hosts/common-home.nix $HOME/.config/nix/hosts/common-home.nix
 
     # Install home-manager CLI
