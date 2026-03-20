@@ -14,5 +14,9 @@
         podman
         podman-compose
         apptainer
+
+        # File manager
+        ueberzugpp
+        yazi
     ];
 }
