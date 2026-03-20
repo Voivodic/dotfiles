@@ -54,13 +54,20 @@ if [ "$ENV_TYPE" = "personal" ]; then
     ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
-    for dir in nushell nvim nix ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed; do
+    for dir in nushell nvim ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed; do
         ln -s $PWD/$dir $HOME/.config
     done
 
+    # Set the nix configurations
+    mkdir $HOME/.config/nix
+    ln -sf $PWD/nix/flake.nix $HOME/.config/nix/flake.nix
+    ln -sf $PWD/nix/flake.lock $HOME/.config/nix/flake.lock
+    ln -s $PWD/nix/hosts/personal $HOME/.config/nix/hosts/personal
+    ln -sf $PWD/nix/hosts/common-home.nix $HOME/.config/nix/hosts/common-home.nix
+
     # Run nixos-rebuild
     echo -e "Downloading all packages and configuring the system...\n"
-    sudo nixos-rebuild switch --flake $HOME/.config/nix#nixos
+    sudo nixos-rebuild switch --flake $HOME/.config/nix#personal
 
     # Sourcing hyprland
     echo -e "Sourcing hyprland...\n"
@@ -131,6 +138,13 @@ elif [ "$ENV_TYPE" = "vps" ]; then
         ln -s $PWD/$dir $HOME/.config
     done
 
+    # Set the nix configurations
+    mkdir $HOME/.config/nix
+    ln -sf $PWD/nix-general/flake.nix $HOME/.config/nix/flake.nix
+    ln -sf $PWD/nix-general/flake.lock $HOME/.config/nix/flake.lock
+    ln -s $PWD/nix-general/hosts/vps $HOME/.config/nix/hosts/vps
+    ln -sf $PWD/nix-general/hosts/common-home.nix $HOME/.config/nix/hosts/common-home.nix
+
     # Install home-manager CLI
     if ! command -v home-manager >/dev/null 2>&1; then
         echo -e "Installing home-manager CLI...\n"
@@ -144,7 +158,7 @@ elif [ "$ENV_TYPE" = "vps" ]; then
 
     # Run home-manager
     echo -e "Downloading all packages and configuring the user ...\n"
-    home-manager switch --flake $HOME/.config/nix#voivodic
+    home-manager switch --flake $HOME/.config/nix#vps
 
     # Manage tpm (Tmux Plugin Manager)
     TPM_DIR="$HOME/.tmux/plugins/tpm"
@@ -195,9 +209,16 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/nix-on-droid $HOME/.config/nix
     ln -sf $PWD/termux/ $HOME/.termux
 
+    # Set the nix configurations
+    mkdir $HOME/.config/nix
+    ln -sf $PWD/nix-general/flake.nix $HOME/.config/nix/flake.nix
+    ln -sf $PWD/nix-general/flake.lock $HOME/.config/nix/flake.lock
+    ln -s $PWD/nix-general/hosts/android $HOME/.config/nix/hosts/android
+    ln -sf $PWD/nix-general/hosts/common-home.nix $HOME/.config/nix/hosts/common-home.nix
+
     # Run nix-on-droid
     echo -e "Downloading all packages and configuring the user ...\n"
-    nix-on-droid switch --flake $HOME/.config/nix
+    nix-on-droid switch --flake $HOME/.config/nix#android
 
     # Manage tpm (Tmux Plugin Manager)
     TPM_DIR="$HOME/.tmux/plugins/tpm"
