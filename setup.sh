@@ -134,7 +134,7 @@ elif [ "$ENV_TYPE" = "vps" ]; then
     ln -sf $PWD/bashrc $HOME/.bashrc  
     ln -sf $PWD/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh 
-    for dir in nushell nvim nix; do
+    for dir in nushell nvim; do
         ln -s $PWD/$dir $HOME/.config
     done
 
@@ -206,7 +206,6 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
     ln -sf $PWD/nvim $HOME/.config
     ln -sf $PWD/nushell $HOME/.config
-    ln -sf $PWD/nix-on-droid $HOME/.config/nix
     ln -sf $PWD/termux/ $HOME/.termux
 
     # Set the nix configurations
