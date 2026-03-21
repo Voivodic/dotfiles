@@ -131,6 +131,9 @@ elif [ "$ENV_TYPE" = "vps" ]; then
         ln -s $PWD/$dir $HOME/.config
     done
 
+    # Set the experimental-features in nix.conf
+    echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+
     # Install home-manager CLI
     if ! command -v home-manager >/dev/null 2>&1; then
         echo -e "Installing home-manager CLI...\n"
@@ -144,7 +147,6 @@ elif [ "$ENV_TYPE" = "vps" ]; then
 
     # Run home-manager
     echo -e "Downloading all packages and configuring the user ...\n"
-    echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
     home-manager switch --flake $HOME/.config/nix#vps
 
     # Manage tpm (Tmux Plugin Manager)
