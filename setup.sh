@@ -54,16 +54,9 @@ if [ "$ENV_TYPE" = "personal" ]; then
     ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
-    for dir in nushell nvim ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed; do
+    for dir in nushell nvim nix ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed; do
         ln -s $PWD/$dir $HOME/.config
     done
-
-    # Set the nix configurations
-    mkdir $HOME/.config/nix
-    ln -sf $PWD/nix/flake.nix $HOME/.config/nix/flake.nix
-    ln -sf $PWD/nix/flake.lock $HOME/.config/nix/flake.lock
-    ln -s $PWD/nix/hosts/personal $HOME/.config/nix/hosts/personal
-    ln -sf $PWD/nix/hosts/common-home.nix $HOME/.config/nix/hosts/common-home.nix
 
     # Run nixos-rebuild
     echo -e "Downloading all packages and configuring the system...\n"
@@ -134,18 +127,9 @@ elif [ "$ENV_TYPE" = "vps" ]; then
     ln -sf $PWD/bashrc $HOME/.bashrc  
     ln -sf $PWD/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh 
-    for dir in nushell nvim; do
+    for dir in nushell nvim nix; do
         ln -s $PWD/$dir $HOME/.config
     done
-
-    # Set the nix configurations
-    mkdir $HOME/.config/nix
-    mkdir $HOME/.config/nix/hosts
-    ln -sf $PWD/nix-general/flake.nix $HOME/.config/nix/flake.nix
-    ln -sf $PWD/nix-general/flake.lock $HOME/.config/nix/flake.lock
-    ln -s $PWD/nix-general/hosts/vps $HOME/.config/nix/hosts
-    ln -sf $PWD/nix-general/hosts/common-home.nix $HOME/.config/nix/hosts/common-home.nix
-    echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
     # Install home-manager CLI
     if ! command -v home-manager >/dev/null 2>&1; then
@@ -160,6 +144,7 @@ elif [ "$ENV_TYPE" = "vps" ]; then
 
     # Run home-manager
     echo -e "Downloading all packages and configuring the user ...\n"
+    echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
     home-manager switch --flake $HOME/.config/nix#vps
 
     # Manage tpm (Tmux Plugin Manager)
@@ -207,15 +192,9 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
     ln -sf $PWD/nvim $HOME/.config
+    ln -sf $PWD/nix $HOME/.config
     ln -sf $PWD/nushell $HOME/.config
     ln -sf $PWD/termux/ $HOME/.termux
-
-    # Set the nix configurations
-    mkdir $HOME/.config/nix
-    ln -sf $PWD/nix-general/flake.nix $HOME/.config/nix/flake.nix
-    ln -sf $PWD/nix-general/flake.lock $HOME/.config/nix/flake.lock
-    ln -s $PWD/nix-general/hosts/android $HOME/.config/nix/hosts/android
-    ln -sf $PWD/nix-general/hosts/common-home.nix $HOME/.config/nix/hosts/common-home.nix
 
     # Run nix-on-droid
     echo -e "Downloading all packages and configuring the user ...\n"
