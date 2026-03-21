@@ -91,7 +91,7 @@ elif [ "$ENV_TYPE" = "vps" ]; then
         # Install nix (multi-user)
         echo -e "Installing nix...\n"
         {
-            sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+            sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon
         } && echo -e "Nix installed!\n" || {
             echo -e "An error occurred while trying to install nix!\n"
             exit 1
