@@ -87,7 +87,7 @@ elif [ "$ENV_TYPE" = "vps" ]; then
     echo -e "Running vps setup...\n"
 
     # Check if nix is already installed and sourced
-    if [ -z "$NIX_GCROOT" ]; then
+    if ! command -v nix &> /dev/null; then
         # Install nix (multi-user)
         echo -e "Installing nix...\n"
         {
@@ -131,23 +131,9 @@ elif [ "$ENV_TYPE" = "vps" ]; then
         ln -s $PWD/$dir $HOME/.config
     done
 
-    # Set the experimental-features in nix.conf
-    echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
-
-    # Install home-manager CLI
-    if ! command -v home-manager >/dev/null 2>&1; then
-        echo -e "Installing home-manager CLI...\n"
-        {
-            nix profile add nixpkgs#home-manager
-        } && echo -e "Home Manager CLI installed!\n" || {
-            echo -e "An error occurred while trying to install Home Manager CLI!\n"
-            exit 1
-        }
-    fi
-
     # Run home-manager
     echo -e "Downloading all packages and configuring the user ...\n"
-    home-manager switch --flake $HOME/.config/nix#vps
+    nix run home-manager/master -- switch --flake $HOME/.config/nix#vps
 
     # Manage tpm (Tmux Plugin Manager)
     TPM_DIR="$HOME/.tmux/plugins/tpm"
