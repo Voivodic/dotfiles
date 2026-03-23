@@ -9,7 +9,8 @@ Host atlas248
 
 Host oracle
     HostName 144.24.203.170
-    User ubuntu
+    # User ubuntu
+    User voivodic
     IdentityFile ~/.ssh/oracle.key
 
 Host laptop
