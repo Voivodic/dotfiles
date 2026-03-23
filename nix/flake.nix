@@ -57,14 +57,14 @@
             };
         in {
             # Configure NixOs hosts
-            # Usage: nixos-rebuild switch --flake  .#hostName.n
+            # Usage: nixos-rebuild switch --flake .#hostName
             nixosConfigurations = {
                 personal = mkNixos "personal";
                 vps = mkNixos "vps";
             };
 
             # Configure Android hosts
-            # Usage: nix-on-droid switch --flake .#tandroid
+            # Usage: nix-on-droid switch --flake .#android
             nixOnDroidConfigurations.android = nix-on-droid.lib.nixOnDroidConfiguration {
                 pkgs = import nixpkgs-android {
                     system = "aarch64-linux";
@@ -76,8 +76,8 @@
                 ];
             };
 
-            # Standalone Home Manager for portability)
-            # Usage: home-manager switch --flake .##hostNameu
+            # Standalone Home Manager for portability
+            # Usage: home-manager switch --flake .#hostName
             homeConfigurations = {
                 personal = mkHome "personal";
                 vps = mkHome "vps";
