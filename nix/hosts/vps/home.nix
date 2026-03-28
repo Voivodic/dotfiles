@@ -11,6 +11,7 @@
     # List of pacckges for this system
     home.packages = with pkgs; [
         # For managing containers
+        shadow
         podman
         podman-compose
         apptainer
