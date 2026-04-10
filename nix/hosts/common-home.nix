@@ -66,6 +66,7 @@
         settings = {
             user.name = "Voivodic";
             user.email = "rodrigo.voivodic@gmail.com";
+            init.defaultBranch = "main";
             alias = {
                 co = "checkout";
                 br = "branch";
