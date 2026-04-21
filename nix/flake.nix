@@ -2,8 +2,8 @@
     description = "Voivodic's Unified Multi-Machine Configuration";
 
     inputs = {
-        # Using the specific commit for nix-on-droid compatibility
-        nixpkgs-android.url = "github:NixOS/nixpkgs/88d3861";
+        # Using the specific commit for nix-on-droid compatibility #
+        nixpkgs-android.url = "github:nixos/nixpkgs/88d3861";
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
         home-manager = {
@@ -70,7 +70,7 @@
                     system = "aarch64-linux";
                     overlays = [ nix-on-droid.overlays.default ];
                 };
-                specialArgs = { inherit inputs username; };
+                extraSpecialArgs = { inherit inputs username; };
                 modules = [ 
                     ./hosts/android/nix-on-droid.nix 
                 ];
