@@ -58,6 +58,9 @@ if [ "$ENV_TYPE" = "personal" ]; then
         ln -s $PWD/$dir $HOME/.config
     done
 
+    # Create the secrets files
+    touch $HOME/.config/nushell/secrets.nu
+
     # Run nixos-rebuild
     echo -e "Downloading all packages and configuring the system...\n"
     sudo nixos-rebuild switch --flake $HOME/.config/nix#personal
@@ -131,6 +134,9 @@ elif [ "$ENV_TYPE" = "vps" ]; then
         ln -s $PWD/$dir $HOME/.config
     done
 
+    # Create the secrets files
+    touch $HOME/.config/nushell/secrets.nu
+
     # Run home-manager
     echo -e "Downloading all packages and configuring the user ...\n"
     nix run home-manager/master -- switch --flake $HOME/.config/nix#vps
@@ -183,6 +189,9 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/nix $HOME/.config
     ln -sf $PWD/nushell $HOME/.config
     ln -sf $PWD/termux/ $HOME/.termux
+
+    # Create the secrets files
+    touch $HOME/.config/nushell/secrets.nu
 
     # Run nix-on-droid
     echo -e "Downloading all packages and configuring the user ...\n"
