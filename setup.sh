@@ -58,9 +58,12 @@ if [ "$ENV_TYPE" = "personal" ]; then
         ln -s $PWD/$dir $HOME/.config
     done
 
+    # Create the secrets files
+    touch $HOME/.config/nushell/secrets.nu
+
     # Run nixos-rebuild
     echo -e "Downloading all packages and configuring the system...\n"
-    sudo nixos-rebuild switch --flake $HOME/.config/nix#nixos
+    sudo nixos-rebuild switch --flake $HOME/.config/nix#personal
 
     # Sourcing hyprland
     echo -e "Sourcing hyprland...\n"
@@ -87,11 +90,11 @@ elif [ "$ENV_TYPE" = "vps" ]; then
     echo -e "Running vps setup...\n"
 
     # Check if nix is already installed and sourced
-    if [ -z "$NIX_GCROOT" ]; then
+    if ! command -v nix &> /dev/null; then
         # Install nix (multi-user)
         echo -e "Installing nix...\n"
         {
-            sh <(curl -L https://nixos.org/nix/install) --no-daemon
+            sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon
         } && echo -e "Nix installed!\n" || {
             echo -e "An error occurred while trying to install nix!\n"
             exit 1
@@ -131,20 +134,12 @@ elif [ "$ENV_TYPE" = "vps" ]; then
         ln -s $PWD/$dir $HOME/.config
     done
 
-    # Install home-manager CLI
-    if ! command -v home-manager >/dev/null 2>&1; then
-        echo -e "Installing home-manager CLI...\n"
-        {
-            nix profile install nixpkgs#home-manager
-        } && echo -e "Home Manager CLI installed!\n" || {
-            echo -e "An error occurred while trying to install Home Manager CLI!\n"
-            exit 1
-        }
-    fi
+    # Create the secrets files
+    touch $HOME/.config/nushell/secrets.nu
 
     # Run home-manager
     echo -e "Downloading all packages and configuring the user ...\n"
-    home-manager switch --flake $HOME/.config/nix#voivodic
+    nix run home-manager/master -- switch --flake $HOME/.config/nix#vps
 
     # Manage tpm (Tmux Plugin Manager)
     TPM_DIR="$HOME/.tmux/plugins/tpm"
@@ -191,13 +186,16 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
     ln -sf $PWD/nvim $HOME/.config
+    ln -sf $PWD/nix $HOME/.config
     ln -sf $PWD/nushell $HOME/.config
-    ln -sf $PWD/nix-on-droid $HOME/.config/nix
     ln -sf $PWD/termux/ $HOME/.termux
+
+    # Create the secrets files
+    touch $HOME/.config/nushell/secrets.nu
 
     # Run nix-on-droid
     echo -e "Downloading all packages and configuring the user ...\n"
-    nix-on-droid switch --flake $HOME/.config/nix
+    nix-on-droid switch --flake $HOME/.config/nix#android
 
     # Manage tpm (Tmux Plugin Manager)
     TPM_DIR="$HOME/.tmux/plugins/tpm"

@@ -9,6 +9,7 @@
         wget
         curl
         htop
+        nvitop
         lshw
         gnumake
         cmake
@@ -18,7 +19,6 @@
         gzip
         gawk
         openssh
-        findutils
 
         # Install the main packages
         neovim
@@ -39,34 +39,18 @@
         rustup
         nodejs
 
-        # Install sphinx for python documentation
-        sphinx
-
         # Install LSPs
         python313Packages.python-lsp-server
         ruff
         clang-tools
         zls
+        gopls
         nixd
-        ltex-ls-plus
-        texlab
         # Formatters
         # Linters
         cppcheck
         codespell
         rstcheckWithSphinx
-
-        # Ollama for running LLMs
-        ollama
-
-        # LLM in terminal
-        gemini-cli
-        qwen-code
-        # opencode
-
-        # For showing information about the system
-        neofetch
-
     ];
 
     # Let Home Manager manage itself
@@ -74,6 +58,24 @@
 
     # Set your default shell
     programs.nushell.enable = true;
+
+    # Set some aliases for git
+    programs.git = {
+        enable = true;
+
+        settings = {
+            user.name = "Voivodic";
+            user.email = "rodrigo.voivodic@gmail.com";
+            init.defaultBranch = "main";
+            alias = {
+                co = "checkout";
+                br = "branch";
+                ci = "commit";
+                st = "status";
+                hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short";
+            };
+        };
+    };
 
     # Enable the fonts
     fonts.fontconfig.enable = true;
