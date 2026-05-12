@@ -2,7 +2,6 @@
   "general": {
     "vimMode": true,
     "preferredEditor": "zeditor",
-    "disableAutoUpdate": true,
     "previewFeatures": true,
     "enableAutoUpdate": false,
     "sessionRetention": {
@@ -42,7 +41,7 @@
   },
   "security": {
     "auth": {
-      "selectedType": "oauth-personal"
+      "selectedType": "gemini-api-key"
     }
   }
 }
