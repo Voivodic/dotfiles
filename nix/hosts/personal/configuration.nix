@@ -139,6 +139,7 @@
         alsa.support32Bit = true;
         pulse.enable = true;
         jack.enable = true;
+        wireplumber.enable = true;
     };
 
     # Enable ssh access from tablet/cellphone
@@ -157,6 +158,7 @@
     console.keyMap = "br-abnt2";
 
     # Enable bluetooth
+    hardware.enableAllFirmware = true;
     hardware.bluetooth.enable = true; 
     hardware.bluetooth.powerOnBoot = true; 
     services.blueman.enable = true;
@@ -173,7 +175,7 @@
     users.users.voivodic = {
         isNormalUser = true;
         description = "Voivodic";
-        extraGroups = [ "networkmanager" "wheel" "gamemode" ];
+        extraGroups = [ "networkmanager" "wheel" "audio" "video" "bluetooth" "gamemode" ];
         # The shell is now managed by Home Manager, but it's good to have a fallback.
         shell = pkgs.nushell;
         # REMOVED: The entire 'packages' list has been moved to home.nix

@@ -14,6 +14,9 @@ waybar &
 swaync &
 swaync-client -df &
 
+# The bluetooth hub 
+blueman-applet &
+
 # Go to the lock screen
 sleep 1
 hyprlock
