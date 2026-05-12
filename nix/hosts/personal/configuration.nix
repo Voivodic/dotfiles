@@ -229,7 +229,7 @@
         wlogout
 
         # Wallpaper
-        swww
+        awww
         waypaper
         jq
 
@@ -288,7 +288,6 @@
         # Stuff for games
         godot_4
         glfw
-        bottles
 
         # Lllama.cpp for local LLMs
         (llama-cpp.override { cudaSupport = true; })
