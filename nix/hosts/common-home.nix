@@ -17,6 +17,7 @@
         gnutar
         gnugrep
         gzip
+        zip
         gawk
         openssh
 
