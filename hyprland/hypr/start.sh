@@ -1,5 +1,5 @@
 # Initialize the wallpaper
-swww-daemon & 
+awww-daemon & 
 waypaper --random   
 cp $(waypaper --list | jq -r '.[0].wallpaper') $HOME/.config/hypr/wallpapers/wallpaper.jpg
 waypaper --wallpaper $HOME/.config/hypr/wallpapers/wallpaper.jpg
