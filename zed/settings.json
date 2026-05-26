@@ -3,6 +3,18 @@
     // General //
     /////////////
 
+    "project_panel": {
+        "dock": "left"
+    },
+    "outline_panel": {
+        "dock": "left"
+    },
+    "collaboration_panel": {
+        "dock": "left"
+    },
+    "git_panel": {
+        "dock": "left"
+    },
     "icon_theme": "Catppuccin Mocha",
     "vim_mode": true,
     "restore_on_startup": "last_workspace",
@@ -223,6 +235,7 @@
     ////////////
 
     "agent": {
+        "dock": "right",
         "inline_assistant_model": {
             "provider": "Zai",
             "model": "glm-5.1"
