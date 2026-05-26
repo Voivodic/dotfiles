@@ -32,7 +32,7 @@
         tree
 
         # Install some languages
-        python313
+        python314
         uv
         gcc
         zig
@@ -41,7 +41,7 @@
         nodejs
 
         # Install LSPs
-        python313Packages.python-lsp-server
+        python314Packages.python-lsp-server
         ruff
         clang-tools
         zls
