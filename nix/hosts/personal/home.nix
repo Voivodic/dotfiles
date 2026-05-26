@@ -24,7 +24,6 @@
 
         # LLM in terminal
         gemini-cli
-        qwen-code
         opencode
 
         # For managing containers
