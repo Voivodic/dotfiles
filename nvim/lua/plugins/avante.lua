@@ -52,25 +52,15 @@ return {
         require("avante").setup({
             instructions_file = "AGENTS.md",
             mode = "agentic",
-            provider = "glm_47",
-            cursor_applying_provider = "gemini_flash_lite",
+            provider = "glm_51",
+            cursor_applying_provider = "gemini_flash",
             behaviour = {
                 enable_cursor_planning_mode = true,
             },
             providers = {
                 gemini_flash = {
                     __inherited_from = "gemini",
-                    model = "gemini-2.5-flash",
-                },
-                gemini_flash_lite = {
-                    __inherited_from = "gemini",
-                    model = "gemini-2.5-flash-lite-preview-06-17",
-                },
-                devstral = {
-                    __inherited_from = "openai",
-                    endpoint = "https://openrouter.ai/api/v1",
-                    api_key_name = "OPENROUTER_API_KEY",
-                    model = "mistralai/devstral-small:free",
+                    model = "gemini-3.5-flash",
                 },
                 glm_47 = {
                     __inherited_from = "openai",
@@ -78,31 +68,12 @@ return {
                     api_key_name = "ZAI_API_KEY",
                     model = "GLM-4.7",
                 },
-                glm_46 = {
+                glm_51 = {
                     __inherited_from = "openai",
                     endpoint = "https://api.z.ai/api/coding/paas/v4",
                     api_key_name = "ZAI_API_KEY",
-                    model = "GLM-4.6",
-                },
-                glm_45_air = {
-                    __inherited_from = "openai",
-                    endpoint = "https://api.z.ai/api/coding/paas/v4",
-                    api_key_name = "ZAI_API_KEY",
-                    model = "GLM-4.5-air",
-                },
-                deepseekR1 = {
-                    __inherited_from = "openai",
-                    endpoint = "https://openrouter.ai/api/v1",
-                    api_key_name = "OPENROUTER_API_KEY",
-                    model = "deepseek/deepseek-r1-0528:free",
-                    disable_tools = true,
-                },
-                deepseekV3 = {
-                    __inherited_from = "openai",
-                    endpoint = "https://openrouter.ai/api/v1",
-                    api_key_name = "OPENROUTER_API_KEY",
-                    model = "deepseek/deepseek-chat-v3-0324:free",
-                },
+                    model = "GLM-5.1",
+                }
             },
 
           -- Diasble some tools because of the conflicts with mcphub
