@@ -168,8 +168,8 @@
                 "api_url": "https://api.z.ai/api/coding/paas/v4",
                 "available_models": [
                     {
-                        "name": "glm-5",
-                        "display_name": "GLM-5",
+                        "name": "glm-5.1",
+                        "display_name": "GLM-5.1",
                         "max_tokens": 200000,
                         "max_output_tokens": 128000,
                         "capabilities": {
@@ -184,18 +184,6 @@
                         "display_name": "GLM-4.7",
                         "max_tokens": 200000,
                         "max_output_tokens": 128000,
-                        "capabilities": {
-                            "tools": true,
-                            "images": false,
-                            "parallel_tool_calls": true,
-                            "prompt_cache_key": false
-                        }
-                    },
-                    {
-                        "name": "glm-4.5-air",
-                        "display_name": "GLM-4.5-Air",
-                        "max_tokens": 128000,
-                        "max_output_tokens": 64000,
                         "capabilities": {
                             "tools": true,
                             "images": false,
@@ -237,11 +225,11 @@
     "agent": {
         "inline_assistant_model": {
             "provider": "Zai",
-            "model": "glm-4.7"
+            "model": "glm-5.1"
         },
         "default_model": {
             "provider": "Zai",
-            "model": "glm-4.7"
+            "model": "glm-5.1"
         },
         "default_profile": "ask",
         "model_parameters": []
@@ -250,12 +238,6 @@
         "gemini-custom": {
             "type": "custom",
             "command": "gemini"
-        },
-        "qwen": {
-            "type": "custom",
-            "command": "qwen",
-            "args": ["--experimental-acp"],
-            "env": {}
         }
     }
 }
