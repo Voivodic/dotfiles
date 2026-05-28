@@ -35,12 +35,10 @@ if [ "$ENV_TYPE" = "personal" ]; then
     mkdir -p $HOME/.config
     mkdir -p $HOME/.ssh
     mkdir -p $HOME/.gemini
-    mkdir -p $HOME/.qwen
-    mkdir -p $HOME/.config/opencode
 
     # Remove the existing directory with configurations
     echo -e "Removing existing configurations...\n"
-    for dir in nushell nvim nix ghostty hypr swaync themes wal waybar waypaper wlogout wofi zed; do
+    for dir in nushell nvim nix ghostty hypr swaync themes wal waybar waypaper wlogout wofi zed opencode; do
         rm -rf $HOME/.config/$dir
     done
 
@@ -51,10 +49,8 @@ if [ "$ENV_TYPE" = "personal" ]; then
     ln -sf $PWD/bashrc $HOME/.bashrc  
     ln -sf $PWD/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh
-    ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
-    ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
-    for dir in nushell nvim nix ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed; do
+    for dir in nushell nvim nix ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed opencode; do
         ln -s $PWD/$dir $HOME/.config
     done
 
@@ -166,12 +162,10 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     mkdir -p $HOME/.config
     mkdir -p $HOME/.ssh
     mkdir -p $HOME/.gemini
-    mkdir -p $HOME/.qwen
-    mkdir -p $HOME/.config/opencode
 
     # Remove the existing directory with configurations
     echo -e "Removing existing configurations...\n"
-    for dir in nushell nix nvim termux; do
+    for dir in nushell nix nvim termux opencode; do
         rm -rf $HOME/.config/$dir
     done
 
@@ -182,9 +176,8 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/bashrc $HOME/.bashrc  
     ln -sf $PWD/profile_termux $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh 
-    ln -sf $PWD/agents/qwen/settings.json $HOME/.qwen/settings.json
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
-    ln -sf $PWD/agents/opencode/config.json $HOME/.config/opencode/config.json
+    ln -sf $PWD/agents/opencode $HOME/.config
     ln -sf $PWD/nvim $HOME/.config
     ln -sf $PWD/nix $HOME/.config
     ln -sf $PWD/nushell $HOME/.config
