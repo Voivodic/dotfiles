@@ -88,6 +88,11 @@
             { "type": "reject" }
           ],
           "transports": {
+            "containers-storage": {
+                "": [
+                    { "type": "insecureAcceptAnything" }
+                ]
+            },
             "docker": {
               "docker.io": [
                 { "type": "insecureAcceptAnything" }

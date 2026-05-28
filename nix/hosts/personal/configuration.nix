@@ -170,6 +170,13 @@
     programs.appimage.enable = true;
     programs.appimage.binfmt = true;
 
+    # Configure podman
+    virtualisation.podman = {
+        enable = true;
+        dockerCompat = true;     # Makes the 'docker' command alias to 'podman'
+        dockerSocket.enable = true; # Emulates the /var/run/docker.sock
+    };
+
 
     # Define a user account.
     users.users.voivodic = {
@@ -292,7 +299,7 @@
         glfw
 
         # Lllama.cpp for local LLMs
-        (llama-cpp.override { cudaSupport = true; })
+        # (llama-cpp.override { cudaSupport = true; })
     ];
 
     # Set the fonts
