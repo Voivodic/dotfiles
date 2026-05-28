@@ -1,25 +1,75 @@
 {
-    "$schema": "https://opencode.ai/config.json",
-    "theme": "catppuccin",
-    "disabled_providers": ["openai", "mistral", "requesty"],
-    "mcp": {
-        "Context7": {
-            "enabled": true,
-            "type": "local",
-            "command": ["npx", "-y", "@upstash/context7-mcp"]
-        },
-        "sequential-thinking": {
-            "enabled": true,
-            "type": "local",
-            "command": ["npx",
-                "-y",
-                "@modelcontextprotocol/server-sequential-thinking"
-            ]
-        },
-        "tavily": {
-            "enabled": true,
-            "type": "local",
-            "command": ["npx", "-y", "tavily-mcp@latest"]
-        }
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "catppuccin",
+  "disabled_providers": [
+    "openai",
+    "mistral",
+    "requesty"
+  ],
+  "mcp": {
+    "zai-mcp-server": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@z_ai/mcp-server"
+      ],
+      "environment": {
+        "Z_AI_API_KEY": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB",
+        "Z_AI_MODE": "ZAI"
+      }
+    },
+    "web-search-prime": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
+      "headers": {
+        "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
+      }
+    },
+    "web-reader": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://api.z.ai/api/mcp/web_reader/mcp",
+      "headers": {
+        "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
+      }
+    },
+    "zread": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://api.z.ai/api/mcp/zread/mcp",
+      "headers": {
+        "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
+      }
+    },
+    "tavily": {
+      "enabled": false,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "tavily-mcp@latest"
+      ]
+    },
+    "Context7": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@upstash/context7-mcp"
+      ]
+    },
+    "sequential-thinking": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     }
+  }
 }
