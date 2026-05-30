@@ -8,7 +8,7 @@ return {
     -- ⚠️ must add this setting! ! !
     build = vim.fn.has("win32") ~= 0
         and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-        or "make",
+        or "BUILD_FROM_SOURCE=true CARGO=/run/current-system/sw/bin/cargo make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
