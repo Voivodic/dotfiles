@@ -38,6 +38,7 @@
         zig
         go
         rustup
+        rustc
         nodejs
 
         # Install LSPs
