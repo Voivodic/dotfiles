@@ -3,6 +3,7 @@
     // General //
     /////////////
 
+    "disable_ai": false,
     "project_panel": {
         "dock": "left"
     },
@@ -226,11 +227,46 @@
     /////////
 
     "context_servers": {
+        "zai-mcp-server": {
+            "enabled": true,
+            "command": "npx",
+            "args": [
+                "-y",
+                "@z_ai/mcp-server"
+            ],
+            "env": {
+                "Z_AI_API_KEY": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB",
+                "Z_AI_MODE": "ZAI"
+            }
+        },
+        "web-search-prime": {
+            "enabled": true,
+            "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
+            "headers": {
+                "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
+            }
+        },
+        "web-reader": {
+            "enabled": true,
+            "url": "https://api.z.ai/api/mcp/web_reader/mcp",
+            "headers": {
+                "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
+            }
+        },
+        "zread": {
+            "enabled": true,
+            "url": "https://api.z.ai/api/mcp/zread/mcp",
+            "headers": {
+                "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
+            }
+        },
         "Context7": {
+            "enabled": true,
             "command": "npx",
             "args": ["-y", "@upstash/context7-mcp"]
         },
         "sequential-thinking": {
+            "enabled": true,
             "command": "npx",
             "args": [
                 "-y",
@@ -238,6 +274,7 @@
             ]
         },
         "tavily": {
+            "enabled": true,
             "command": "npx",
             "args": ["-y", "tavily-mcp@latest"]
         }
@@ -248,17 +285,18 @@
     ////////////
 
     "agent": {
+        "sidebar_side": "left",
         "dock": "right",
         "inline_assistant_model": {
-            "provider": "Zai",
-            "model": "glm-5.1"
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite"
         },
         "default_model": {
             "enable_thinking": true,
-            "provider": "google",
-            "model": "gemini-2.5-flash"
+            "provider": "Zai",
+            "model": "glm-5.1"
         },
-        "default_profile": "ask",
+        "default_profile": "write",
         "model_parameters": []
     },
     "agent_servers": {
