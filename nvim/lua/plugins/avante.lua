@@ -53,6 +53,7 @@ return {
             instructions_file = "AGENTS.md",
             mode = "agentic",
             provider = "glm_51",
+            inline_provider = "gemini_flash",
             cursor_applying_provider = "gemini_flash",
             behaviour = {
                 enable_cursor_planning_mode = true,
@@ -73,7 +74,13 @@ return {
                     endpoint = "https://api.z.ai/api/coding/paas/v4",
                     api_key_name = "ZAI_API_KEY",
                     model = "GLM-5.1",
-                }
+                },
+                glm_5_turbo = {
+                    __inherited_from = "openai",
+                    endpoint = "https://api.z.ai/api/coding/paas/v4",
+                    api_key_name = "ZAI_API_KEY",
+                    model = "GLM-5-turbo",
+                },
             },
 
           -- Diasble some tools because of the conflicts with mcphub
