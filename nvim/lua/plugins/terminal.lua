@@ -18,6 +18,32 @@ return {
         vim.keymap.set("n", "<leader>tH", term_map.move({ open_cmd = "botright new" }), { desc = 'Terminal: Move (H-Split Bottom Right)' })
         vim.keymap.set("n", "<leader>tf", term_map.move({ open_cmd = "float" }), { desc = 'Terminal: Move (Float)' })
 
+        -- Create a new terminal window in the bottom quarter of the screen
+        local function open_quarter_terminal()
+            -- 1. Calculate 25% height of the screen
+            local total_height = vim.o.lines - vim.o.cmdheight
+            local quarter_height = math.floor(total_height * 0.25)
+
+            -- 2. Create an empty scratch buffer first (unlisted, scratchpad)
+            local buf = vim.api.nvim_create_buf(false, true)
+
+            -- 3. Open that specific buffer in a full-width bottom split layout
+            local win = vim.api.nvim_open_win(buf, true, {
+                split = "below",
+                height = quarter_height,
+                win = -1, -- Global layout framework (acts like 'botright')
+            })
+
+            -- 4. Spawn the interactive shell process inside that exact buffer window
+            -- This guarantees no duplicate windows can pop up
+            vim.fn.termopen(vim.o.shell)
+
+            -- 5. Drop straight into terminal insert mode so you can type immediately
+            vim.cmd("startinsert")
+        end
+        vim.keymap.set("n", "<leader>tt", open_quarter_terminal, { desc = "Clean 1/4 Bottom Terminal" })
+
+
         -- Remap to go from terminal mode to normal mode
         vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Terminal: Normal Mode' })
 
