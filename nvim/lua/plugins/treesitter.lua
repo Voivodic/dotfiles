@@ -1,9 +1,11 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     name = "treesitter",
+    branch = "main",
     build = ":TSUpdate",
+    main = "nvim-treesitter.config",
     config = function()
-        local configs = require("nvim-treesitter.configs")
+        local configs = require("nvim-treesitter.config")
         configs.setup({
             ensure_installed = {
                 "lua", 
