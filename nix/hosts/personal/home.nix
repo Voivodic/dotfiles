@@ -23,7 +23,7 @@
         # Linters
 
         # LLM in terminal
-        gemini-cli
+        antigravity-cli
         opencode
 
         # For managing containers
