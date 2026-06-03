@@ -300,9 +300,8 @@
         "model_parameters": []
     },
     "agent_servers": {
-        "gemini-custom": {
-            "type": "custom",
-            "command": "gemini"
+        "glm-acp-agent": {
+            "type": "registry"
         }
     }
 }
