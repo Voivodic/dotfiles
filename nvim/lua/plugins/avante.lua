@@ -66,19 +66,19 @@ return {
                 glm_47 = {
                     __inherited_from = "openai",
                     endpoint = "https://api.z.ai/api/coding/paas/v4",
-                    api_key_name = "ZAI_API_KEY",
+                    api_key_name = "Z_AI_API_KEY",
                     model = "GLM-4.7",
                 },
                 glm_51 = {
                     __inherited_from = "openai",
                     endpoint = "https://api.z.ai/api/coding/paas/v4",
-                    api_key_name = "ZAI_API_KEY",
+                    api_key_name = "Z_AI_API_KEY",
                     model = "GLM-5.1",
                 },
                 glm_5_turbo = {
                     __inherited_from = "openai",
                     endpoint = "https://api.z.ai/api/coding/paas/v4",
-                    api_key_name = "ZAI_API_KEY",
+                    api_key_name = "Z_AI_API_KEY",
                     model = "GLM-5-turbo",
                 },
             },
