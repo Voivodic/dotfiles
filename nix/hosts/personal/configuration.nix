@@ -215,6 +215,9 @@
         # Screen-shots
         hyprshot
 
+        # Keyboard shortcuts
+        wtype
+
         # Status bar
         waybar
         hyprpicker
