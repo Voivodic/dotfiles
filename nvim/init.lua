@@ -16,6 +16,8 @@ vim.keymap.set("n", "<leader>bc", ":enew<CR>", { desc = "Create new buffer" })
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete current buffer" })
 vim.keymap.set("n", "<leader>bn", ":bprev<CR>", { desc = "Go to previous buffer" })
 vim.keymap.set("n", "<leader>bm", ":bnext<CR>", { desc = "Go to next buffer" })
+vim.keymap.set("n", "<leader>bh", ":split | enew<CR>", { desc = "Create new buffer in horizontal split" })
+vim.keymap.set("n", "<leader>bv", ":vsplit | enew<CR>", { desc = "Create new buffer in vertical split" })
 
 -- Navigate vim panes better
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>", { desc = "Move to left pane" })
@@ -24,11 +26,12 @@ vim.keymap.set("n", "<c-k>", ":wincmd k<CR>", { desc = "Move to upper pane" })
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>", { desc = "Move to right pane" })
 
 -- New keymaps for pane creation and closing
-vim.keymap.set("n", "<leader>ws", ":wincmd s<CR>", { desc = "Create horizontal split" })
+vim.keymap.set("n", "<leader>wh", ":wincmd s<CR>", { desc = "Create horizontal split" })
 vim.keymap.set("n", "<leader>wv", ":wincmd v<CR>", { desc = "Create vertical split" })
 vim.keymap.set("n", "<leader>wc", ":wincmd c<CR>", { desc = "Close current window" })
-vim.keymap.set("n", "<leader>bs", ":split | enew<CR>", { desc = "Create new buffer in horizontal split" })
-vim.keymap.set("n", "<leader>bv", ":vsplit | enew<CR>", { desc = "Create new buffer in vertical split" })
+
+-- Shortchut for copythng to system clipboard
+vim.keymap.set({"n", "v"}, "<leader>y", "\"+y", { desc = "Copy selected text to system clipboard" })
 
 -- Load all the plugins and configurations
 require("config.lazy")
