@@ -30,5 +30,8 @@
         podman
         podman-compose
         apptainer
+
+        # Note taking
+        obsidian
     ];
 }
