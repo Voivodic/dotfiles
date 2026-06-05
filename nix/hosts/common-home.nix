@@ -18,14 +18,19 @@
         gnugrep
         gzip
         zip
+        unzip
         gawk
         openssh
+
+        # Extra CLIs
+        zoxide
+        ripgrep
+        fd
+        fzf
 
         # Install the main packages
         neovim
         nushell
-        fzf
-        unzip
         sshfs
         tmux
         starship
