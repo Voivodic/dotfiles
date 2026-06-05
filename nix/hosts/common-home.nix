@@ -27,6 +27,7 @@
         ripgrep
         fd
         fzf
+        lazygit
 
         # Install the main packages
         neovim
