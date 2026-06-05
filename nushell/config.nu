@@ -20,3 +20,6 @@ alias pod-down = podman-compose down
 
 # Alias for zed
 def zed [file] {zeditor $file}
+
+# Source zoxide
+source ~/.zoxide.nu

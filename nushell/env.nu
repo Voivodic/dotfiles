@@ -16,3 +16,6 @@ $env.EDITOR = "nvim"
 # Set starship
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
+
+# Initialize zoxide
+zoxide init nushell | save -f ~/.zoxide.nu
