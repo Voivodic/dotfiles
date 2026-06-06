@@ -78,7 +78,7 @@
             alias = {
                 co = "checkout";
                 br = "branch";
-                ci = "commit";
+                cm = "commit -m";
                 st = "status";
                 hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short";
             };
