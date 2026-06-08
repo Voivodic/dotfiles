@@ -19,7 +19,7 @@ return {
         "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
         "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
         "ibhagwan/fzf-lua", -- for file_selector provider fzf
-        "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+        "echasnovski/mini.icons", -- or "nvim-tree/nvim-web-devicons"
         {
             -- support for image pasting
             "HakonHarnes/img-clip.nvim",
