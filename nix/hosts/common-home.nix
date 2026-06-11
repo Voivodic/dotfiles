@@ -8,6 +8,7 @@
         git
         wget
         curl
+        bat
         htop
         nvitop
         lshw
