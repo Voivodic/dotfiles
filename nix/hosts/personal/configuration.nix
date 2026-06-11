@@ -292,6 +292,7 @@
         # Install some extra packages
         spotify
         zoom-us
+        slack
 
         # Cuda for GPU acceleration
         cudaPackages.cudatoolkit
