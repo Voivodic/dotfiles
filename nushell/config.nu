@@ -23,3 +23,4 @@ def zed [file] {zeditor $file}
 
 # Source zoxide
 source ~/.zoxide.nu
+alias cd = z
