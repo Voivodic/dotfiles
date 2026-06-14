@@ -1,5 +1,5 @@
 # Add to PATH
-# $env.PATH = ($env.PATH | split row (char esep) | append "")
+$env.PATH = ($env.PATH | split row (char esep) | append "~/.local/bin")
 
 # Source the secrets file
 source ~/.config/nushell/secrets.nu
