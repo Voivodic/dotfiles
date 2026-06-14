@@ -50,7 +50,7 @@ if [ "$ENV_TYPE" = "personal" ]; then
     ln -sf $PWD/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
-    for dir in nushell nvim nix ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed opencode; do
+    for dir in nushell nvim nix ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed agents/opencode; do
         ln -s $PWD/$dir $HOME/.config
     done
 
