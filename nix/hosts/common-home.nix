@@ -47,6 +47,7 @@
         rustup
         rustc
         nodejs
+        bun
 
         # Install LSPs
         python314Packages.python-lsp-server
