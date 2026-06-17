@@ -25,6 +25,7 @@
         # LLM in terminal
         antigravity-cli
         opencode
+        pi-coding-agent
 
         # For managing containers
         podman
