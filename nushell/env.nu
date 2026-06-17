@@ -13,6 +13,9 @@ $env.BROWSER = "microsoft-edge"
 # Set the default editor
 $env.EDITOR = "nvim"
 
+# Skip Pi version check 
+$env.PI_SKIP_VERSION_CHECK = 1
+
 # Set starship
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
