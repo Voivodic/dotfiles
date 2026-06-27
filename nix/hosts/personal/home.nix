@@ -27,6 +27,10 @@
         opencode
         pi-coding-agent
 
+        # To help AI agents
+        rtk
+        jq
+
         # For managing containers
         podman
         podman-compose
