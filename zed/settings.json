@@ -228,7 +228,7 @@
 
     "context_servers": {
         "zai-mcp-server": {
-            "enabled": true,
+            "enabled": false,
             "command": "npx",
             "args": [
                 "-y",
@@ -240,21 +240,21 @@
             }
         },
         "web-search-prime": {
-            "enabled": true,
+            "enabled": false,
             "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
             "headers": {
                 "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
             }
         },
         "web-reader": {
-            "enabled": true,
+            "enabled": false,
             "url": "https://api.z.ai/api/mcp/web_reader/mcp",
             "headers": {
                 "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
             }
         },
         "zread": {
-            "enabled": true,
+            "enabled": false,
             "url": "https://api.z.ai/api/mcp/zread/mcp",
             "headers": {
                 "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
