@@ -26,7 +26,7 @@
     };
 
     # Used to recognize the keyboard
-    boot.kernelModules = [ "ideapad_laptop" ];
+    boot.kernelModules = [ "ideapad_laptop" "nvidia_uvm" ];
 
     # For the bootloader
     #boot.loader.systemd-boot.enable = false;
@@ -170,19 +170,25 @@
     programs.appimage.enable = true;
     programs.appimage.binfmt = true;
 
-    # Configure podman
-    virtualisation.podman = {
-        enable = true;
-        dockerCompat = true;     # Makes the 'docker' command alias to 'podman'
-        dockerSocket.enable = true; # Emulates the /var/run/docker.sock
-    };
+    virtualisation.docker.enable = true;
 
+    # Configure podman
+    # virtualisation.podman = {
+    #     enable = true;
+    #     dockerCompat = true;     # Makes the 'docker' command alias to 'podman'
+    #     dockerSocket.enable = true; # Emulates the /var/run/docker.sock
+    # };
+
+    programs.nix-ld.enable = true;
+    programs.nix-ld.libraries = with pkgs; [
+      stdenv.cc.cc.lib
+    ];
 
     # Define a user account.
     users.users.voivodic = {
         isNormalUser = true;
         description = "Voivodic";
-        extraGroups = [ "networkmanager" "wheel" "audio" "video" "bluetooth" "gamemode" ];
+        extraGroups = [ "networkmanager" "wheel" "audio" "video" "bluetooth" "gamemode" "docker" ];
         # The shell is now managed by Home Manager, but it's good to have a fallback.
         shell = pkgs.nushell;
         # REMOVED: The entire 'packages' list has been moved to home.nix
@@ -259,15 +265,7 @@
 
         # Browser
         # Tempororary fix for the microsoft-edge package
-        (pkgs.microsoft-edge.overrideAttrs (old: { 
-            version = "145.0.3800.70"; 
-            src = pkgs.fetchurl { 
-                url = "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_145.0.3800.70-1_amd64.deb"; 
-                sha256 = "sha256-gUyh9AD1ntnZb2iLRwKLxy0PxY0Dist73oT9AC2pFQI=";
-            };
-        }))
-        # microsoft-edge
-        # chromium
+        microsoft-edge
 
         # Network management tool
         #networkmanager
@@ -303,7 +301,7 @@
         glfw
 
         # Lllama.cpp for local LLMs
-        # (llama-cpp.override { cudaSupport = true; })
+        (llama-cpp.override { cudaSupport = true; })
     ];
 
     # Set the fonts
