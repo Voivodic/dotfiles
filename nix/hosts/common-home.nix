@@ -29,6 +29,7 @@
         fd
         fzf
         lazygit
+        glow
 
         # Install the main packages
         neovim
