@@ -30,6 +30,8 @@
         # To help AI agents
         rtk
         jq
+        agent-browser
+        chromium
 
         # For managing containers
         podman
