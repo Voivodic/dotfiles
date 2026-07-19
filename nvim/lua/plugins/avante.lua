@@ -52,7 +52,7 @@ return {
         require("avante").setup({
             instructions_file = "AGENTS.md",
             mode = "agentic",
-            provider = "glm_51",
+            provider = "glm_52",
             inline_provider = "gemini_flash",
             cursor_applying_provider = "gemini_flash",
             behaviour = {
@@ -74,6 +74,12 @@ return {
                     endpoint = "https://api.z.ai/api/coding/paas/v4",
                     api_key_name = "Z_AI_API_KEY",
                     model = "GLM-5.1",
+                },
+                glm_52 = {
+                    __inherited_from = "openai",
+                    endpoint = "https://api.z.ai/api/coding/paas/v4",
+                    api_key_name = "Z_AI_API_KEY",
+                    model = "GLM-5.2",
                 },
                 glm_5_turbo = {
                     __inherited_from = "openai",
