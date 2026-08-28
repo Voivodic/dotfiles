@@ -14,6 +14,7 @@
         lshw
         gnumake
         cmake
+        ninja
         gnused
         gnutar
         gnugrep
