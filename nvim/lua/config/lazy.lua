@@ -33,6 +33,9 @@ require("lazy").setup({
     { "ravitemer/mcphub.nvim", enabled = false },
     { "epwalsh/obsidian.nvim", enabled = false },
   },
+  -- NixOS: no luarocks/hererocks; avante deps are git plugins and native
+  -- parts are built via cargo in the plugin's build command.
+  rocks = { enabled = false },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },

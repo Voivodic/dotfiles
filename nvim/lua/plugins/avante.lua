@@ -15,6 +15,9 @@ return {
         "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
+        -- Required dependencies for avante.nvim command parsing
+        { "ColinKennedy/mega.cmdparse", version = "v1.*" },
+        { "ColinKennedy/mega.logging", version = "v1.*" },
         --- The below dependencies are optional,
         "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
         "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
@@ -52,7 +55,7 @@ return {
         require("avante").setup({
             instructions_file = "AGENTS.md",
             mode = "agentic",
-            provider = "glm_52",
+            provider = "glm_53",
             inline_provider = "gemini_flash",
             cursor_applying_provider = "gemini_flash",
             behaviour = {
@@ -63,23 +66,11 @@ return {
                     __inherited_from = "gemini",
                     model = "gemini-3.5-flash",
                 },
-                glm_47 = {
+                glm_53 = {
                     __inherited_from = "openai",
                     endpoint = "https://api.z.ai/api/coding/paas/v4",
                     api_key_name = "Z_AI_API_KEY",
-                    model = "GLM-4.7",
-                },
-                glm_51 = {
-                    __inherited_from = "openai",
-                    endpoint = "https://api.z.ai/api/coding/paas/v4",
-                    api_key_name = "Z_AI_API_KEY",
-                    model = "GLM-5.1",
-                },
-                glm_52 = {
-                    __inherited_from = "openai",
-                    endpoint = "https://api.z.ai/api/coding/paas/v4",
-                    api_key_name = "Z_AI_API_KEY",
-                    model = "GLM-5.2",
+                    model = "GLM-5.3",
                 },
                 glm_5_turbo = {
                     __inherited_from = "openai",
