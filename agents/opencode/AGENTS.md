@@ -25,6 +25,7 @@
 - If the project does not have any testing tools, scripts, MCP tools, skills, etc. available for testing, ask the user whether testing should be skipped.
 
 ## TOOLS
+
 - Use `ripgrep` instead of `grep` to search in files.
 - Prefer `fd` over `find` when searching for files in the project.
 - Leverage the Context7 MCP tools to look up documentation for languages and libraries.

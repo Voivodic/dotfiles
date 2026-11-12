@@ -8,43 +8,6 @@
     "requesty"
   ],
   "mcp": {
-    "zai-mcp-server": {
-      "enabled": false,
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@z_ai/mcp-server"
-      ],
-      "environment": {
-        "Z_AI_API_KEY": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB",
-        "Z_AI_MODE": "ZAI"
-      }
-    },
-    "web-search-prime": {
-      "enabled": false,
-      "type": "remote",
-      "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
-      "headers": {
-        "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
-      }
-    },
-    "web-reader": {
-      "enabled": false,
-      "type": "remote",
-      "url": "https://api.z.ai/api/mcp/web_reader/mcp",
-      "headers": {
-        "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
-      }
-    },
-    "zread": {
-      "enabled": false,
-      "type": "remote",
-      "url": "https://api.z.ai/api/mcp/zread/mcp",
-      "headers": {
-        "Authorization": "6cb27c3aef5a43e591265e0bc8d8d7c5.qT4JX5qayBGwkVEB"
-      }
-    },
     "tavily": {
       "enabled": true,
       "type": "local",
