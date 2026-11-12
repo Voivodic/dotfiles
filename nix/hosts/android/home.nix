@@ -11,8 +11,8 @@
     # List of pacckges for this system
     home.packages = with pkgs; [
         # LLM in terminal
-        gemini-cli
-        qwen-code
-        # opencode
+        antigravity-cli
+        opencode
+        pi-coding-agent
     ];
 }
