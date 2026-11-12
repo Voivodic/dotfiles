@@ -112,11 +112,11 @@
         enable = true;
         settings = {
             initial_session = {
-                command = "Hyprland";
+                command = "start-hyprland";
                 user = "voivodic";
             };
             default_session = {
-                command = "Hyprland";
+                command = "start-hyprland";
                 user = "voivodic";
             };
         };
