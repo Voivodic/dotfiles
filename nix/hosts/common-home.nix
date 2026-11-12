@@ -41,7 +41,7 @@
         tree
 
         # Install some languages
-        python314
+        python3
         uv
         gcc
         zig
@@ -52,7 +52,7 @@
         bun
 
         # Install LSPs
-        python314Packages.python-lsp-server
+        python3Packages.python-lsp-server
         ruff
         clang-tools
         zls
