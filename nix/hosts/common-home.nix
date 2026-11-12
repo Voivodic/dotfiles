@@ -69,7 +69,10 @@
     programs.home-manager.enable = true;
 
     # Set your default shell
-    programs.nushell.enable = true;
+    programs.nushell = {
+        enable = true;
+        loadSessionVariables = true;
+    };
 
     # Set some aliases for git
     programs.git = {
