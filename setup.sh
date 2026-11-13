@@ -34,7 +34,6 @@ if [ "$ENV_TYPE" = "personal" ]; then
     echo -e "Creating configuration folders...\n"
     mkdir -p $HOME/.config
     mkdir -p $HOME/.ssh
-    mkdir -p $HOME/.gemini
 
     # Remove the existing directory with configurations
     echo -e "Removing existing configurations...\n"
@@ -161,7 +160,6 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     echo -e "Creating configuration folders...\n"
     mkdir -p $HOME/.config
     mkdir -p $HOME/.ssh
-    mkdir -p $HOME/.gemini
 
     # Remove the existing directory with configurations
     echo -e "Removing existing configurations...\n"
@@ -176,7 +174,6 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/bashrc $HOME/.bashrc  
     ln -sf $PWD/profile_termux $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh 
-    ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
     ln -sf $PWD/agents/opencode $HOME/.config
     ln -sf $PWD/nvim $HOME/.config
     ln -sf $PWD/nix $HOME/.config
