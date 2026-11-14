@@ -45,7 +45,7 @@
 
             # Shared helper for home-manager (aarch64)
             mkHome_aarch64 = hostName: home-manager.lib.homeManagerConfiguration {
-                pkgs = nixpkgs.legacyPackages."aarch64";
+                pkgs = nixpkgs.legacyPackages."aarch64-linux";
                 extraSpecialArgs = { inherit inputs username; };
                 modules = [ ./hosts/${hostName}/home.nix ];
             };
