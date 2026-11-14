@@ -45,13 +45,21 @@ if [ "$ENV_TYPE" = "personal" ]; then
     echo -e "Creating symbolic links...\n"
     ln -sf $PWD/starship/starship.toml $HOME/.config
     ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
-    ln -sf $PWD/bashrc $HOME/.bashrc  
-    ln -sf $PWD/profile $HOME/.profile
+    ln -sf $PWD/bash/bashrc $HOME/.bashrc  
+    ln -sf $PWD/bash/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh
     ln -sf $PWD/agents/gemini/settings.json $HOME/.gemini/settings.json
-    for dir in nushell nvim nix ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed agents/opencode; do
+    for dir in nushell nvim ghostty hyprland/hypr hyprland/swaync themes hyprland/wal hyprland/waybar hyprland/waypaper hyprland/wlogout hyprland/wofi zed agents/opencode; do
         ln -s $PWD/$dir $HOME/.config
     done
+
+    # Create the symbolic links for the  nix configurations
+    mkdir -p $HOME/.config/nix
+    ln -sf $PWD/nix/flake.nix $HOME/.config/nix
+    ln -sf $PWD/nix/nix.conf $HOME/.config/nix/nix.conf
+    mkdir -p $HOME/.config/nix/hosts
+    ln -sf $PWD/nix/hosts/common-home.nix $HOME/.config/nix/hosts
+    ln -sf $PWD/nix/hosts/personal $HOME/.config/nix/hosts
 
     # Create the secrets files
     touch $HOME/.config/nushell/secrets.nu
@@ -122,12 +130,20 @@ elif [ "$ENV_TYPE" = "vps" ]; then
     echo -e "Creating symbolic links...\n"
     ln -sf $PWD/starship/starship.toml $HOME/.config
     ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
-    ln -sf $PWD/bashrc $HOME/.bashrc  
-    ln -sf $PWD/profile $HOME/.profile
+    ln -sf $PWD/bash/bashrc $HOME/.bashrc  
+    ln -sf $PWD/bash/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh 
-    for dir in nushell nvim nix; do
+    for dir in nushell nvim; do
         ln -s $PWD/$dir $HOME/.config
     done
+
+    # Create the symbolic links for the  nix configurations
+    mkdir -p $HOME/.config/nix
+    ln -sf $PWD/nix/flake.nix $HOME/.config/nix
+    ln -sf $PWD/nix/nix.conf $HOME/.config/nix/nix.conf
+    mkdir -p $HOME/.config/nix/hosts
+    ln -sf $PWD/nix/hosts/common-home.nix $HOME/.config/nix/hosts
+    ln -sf $PWD/nix/hosts/vps $HOME/.config/nix/hosts
 
     # Create the secrets files
     touch $HOME/.config/nushell/secrets.nu
@@ -166,19 +182,27 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     for dir in nushell nix nvim opencode; do
         rm -rf $HOME/.config/$dir
     done
+    rm -rf /data/data/com.termux/files/home/.termux
 
     # Create the symbolic links with the configurations
     echo -e "Creating symbolic links...\n"
-    ln -sf $PWD/termux/ /data/data/com.termux/files/home/.termux
+    ln -sf $PWD/termux /data/data/com.termux/files/home/.termux
     ln -sf $PWD/starship/starship.toml $HOME/.config
     ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
-    ln -sf $PWD/bashrc $HOME/.bashrc  
-    ln -sf $PWD/profile $HOME/.profile
+    ln -sf $PWD/bash/bashrc_termux $HOME/.bashrc  
+    ln -sf $PWD/bash/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh 
-    ln -sf $PWD/agents/opencode $HOME/.config
-    ln -sf $PWD/nvim $HOME/.config
-    ln -sf $PWD/nix $HOME/.config
-    ln -sf $PWD/nushell $HOME/.config
+    for dir in nushell nvim; do
+        ln -s $PWD/$dir $HOME/.config
+    done
+
+    # Create the symbolic links for the  nix configurations
+    mkdir -p $HOME/.config/nix
+    ln -sf $PWD/nix/flake.nix $HOME/.config/nix
+    ln -sf $PWD/nix/nix_termux.conf $HOME/.config/nix/nix.conf
+    mkdir -p $HOME/.config/nix/hosts
+    ln -sf $PWD/nix/hosts/common-home.nix $HOME/.config/nix/hosts
+    ln -sf $PWD/nix/hosts/termux $HOME/.config/nix/hosts
 
     # Create the secrets files
     touch $HOME/.config/nushell/secrets.nu
