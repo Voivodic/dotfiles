@@ -156,7 +156,35 @@ elif [ "$ENV_TYPE" = "vps" ]; then
 elif [ "$ENV_TYPE" = "termux" ]; then
     echo -e "Running termux setup...\n"
 
+    # Create the configuration foldes (if not present)
+    echo -e "Creating configuration folders...\n"
+    mkdir -p $HOME/.config
+    mkdir -p $HOME/.ssh
+
+    # Remove the existing directory with configurations
+    echo -e "Removing existing configurations...\n"
+    for dir in nushell nix nvim opencode; do
+        rm -rf $HOME/.config/$dir
+    done
+
+    # Create the symbolic links with the configurations
+    echo -e "Creating symbolic links...\n"
+    ln -sf $PWD/termux/ /data/data/com.termux/files/home/.termux
+    ln -sf $PWD/starship/starship.toml $HOME/.config
+    ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
+    ln -sf $PWD/bashrc $HOME/.bashrc  
+    ln -sf $PWD/profile $HOME/.profile
+    ln -sf $PWD/ssh/config $HOME/.ssh 
+    ln -sf $PWD/agents/opencode $HOME/.config
+    ln -sf $PWD/nvim $HOME/.config
+    ln -sf $PWD/nix $HOME/.config
+    ln -sf $PWD/nushell $HOME/.config
+
+    # Create the secrets files
+    touch $HOME/.config/nushell/secrets.nu
+
     # Check if nix is already installed and sourced
+    grep -qxF "sandbox = false" ~/.config/nix/nix.conf || echo "sandbox = false" >> ~/.config/nix/nix.conf
     if ! command -v nix &> /dev/null; then
         # Install nix (multi-user)
         echo -e "Installing nix...\n"
@@ -178,33 +206,6 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     else
         echo -e "Nix is already installed and sourced. Skipping installation and sourcing.\n"
     fi
-
-    # Create the configuration foldes (if not present)
-    echo -e "Creating configuration folders...\n"
-    mkdir -p $HOME/.config
-    mkdir -p $HOME/.ssh
-
-    # Remove the existing directory with configurations
-    echo -e "Removing existing configurations...\n"
-    for dir in nushell nix nvim opencode; do
-        rm -rf $HOME/.config/$dir
-    done
-
-    # Create the symbolic links with the configurations
-    echo -e "Creating symbolic links...\n"
-    ln -sf $PWD/starship/starship.toml $HOME/.config
-    ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
-    ln -sf $PWD/bashrc $HOME/.bashrc  
-    ln -sf $PWD/profile $HOME/.profile
-    ln -sf $PWD/ssh/config $HOME/.ssh 
-    ln -sf $PWD/agents/opencode $HOME/.config
-    ln -sf $PWD/nvim $HOME/.config
-    ln -sf $PWD/nix $HOME/.config
-    ln -sf $PWD/nushell $HOME/.config
-    ln -sf $PWD/termux/ /data/data/com.termux/files/home/.termux
-
-    # Create the secrets files
-    touch $HOME/.config/nushell/secrets.nu
 
     # Run home-manager
     echo -e "Downloading all packages and configuring the user ...\n"

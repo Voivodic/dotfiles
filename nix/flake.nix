@@ -37,8 +37,15 @@
             };
 
             # Shared helper for home-manager (x86_64)
-            mkHome = hostName: home-manager.lib.homeManagerConfiguration {
+            mkHome_x86_64 = hostName: home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages."x86_64-linux";
+                extraSpecialArgs = { inherit inputs username; };
+                modules = [ ./hosts/${hostName}/home.nix ];
+            };
+
+            # Shared helper for home-manager (aarch64)
+            mkHome_aarch64 = hostName: home-manager.lib.homeManagerConfiguration {
+                pkgs = nixpkgs.legacyPackages."aarch64";
                 extraSpecialArgs = { inherit inputs username; };
                 modules = [ ./hosts/${hostName}/home.nix ];
             };
@@ -54,9 +61,9 @@
             # Standalone Home Manager for portability
             # Usage: home-manager switch --flake .#hostName
             homeConfigurations = {
-                personal = mkHome "personal";
-                vps = mkHome "vps";
-                termux = mkHome "termux";
+                personal = mkHome_x86_64 "personal";
+                vps = mkHome_x86_64 "vps";
+                termux = mkHome_aarch64 "termux";
             };
         };
 }
