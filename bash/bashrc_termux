@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Set some aliases
+alias ls="ls --color=auto"
+alias ll="ls -lh --color=auto"
+alias la="ls -lha --color=auto"
+
+# Automatically switch to Nushell if available and not already running
+if [[ $- == *i* ]] && [[ -x "$HOME/.nix-profile/bin/nu" ]] && [[ "$SHELL" != */nu ]]; then
+    exec "$HOME/.nix-profile/bin/nu"
+fi
