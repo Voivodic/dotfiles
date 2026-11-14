@@ -2,33 +2,20 @@
     description = "Voivodic's Unified Multi-Machine Configuration";
 
     inputs = {
-        # Using the specific commit for nix-on-droid compatibility #
-        nixpkgs-android.url = "github:nixos/nixpkgs/88d3861";
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        home-manager-android = {
-            url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs-android";
-        };
-
-
+        
         lanzaboote = {
             url = "github:nix-community/lanzaboote/master";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
-        nix-on-droid = {
-            url = "github:nix-community/nix-on-droid";
-            inputs.nixpkgs.follows = "nixpkgs-android";
-            inputs.home-manager.follows = "home-manager-android";
-        };
     };
 
-    outputs = { self, nixpkgs, nixpkgs-android, home-manager, home-manager-android, lanzaboote, nix-on-droid, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, lanzaboote, ... }@inputs:
         let
             username = "voivodic";
 
@@ -61,19 +48,7 @@
             nixosConfigurations = {
                 personal = mkNixos "personal";
                 vps = mkNixos "vps";
-            };
-
-            # Configure Android hosts
-            # Usage: nix-on-droid switch --flake .#android
-            nixOnDroidConfigurations.android = nix-on-droid.lib.nixOnDroidConfiguration {
-                pkgs = import nixpkgs-android {
-                    system = "aarch64-linux";
-                    overlays = [ nix-on-droid.overlays.default ];
-                };
-                extraSpecialArgs = { inherit inputs username; };
-                modules = [ 
-                    ./hosts/android/nix-on-droid.nix 
-                ];
+                termux = mkNixos "termux";
             };
 
             # Standalone Home Manager for portability
@@ -81,6 +56,7 @@
             homeConfigurations = {
                 personal = mkHome "personal";
                 vps = mkHome "vps";
+                termux = mkHome "termux";
             };
         };
 }

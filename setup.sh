@@ -156,6 +156,29 @@ elif [ "$ENV_TYPE" = "vps" ]; then
 elif [ "$ENV_TYPE" = "termux" ]; then
     echo -e "Running termux setup...\n"
 
+    # Check if nix is already installed and sourced
+    if ! command -v nix &> /dev/null; then
+        # Install nix (multi-user)
+        echo -e "Installing nix...\n"
+        {
+            sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon
+        } && echo -e "Nix installed!\n" || {
+            echo -e "An error occurred while trying to install nix!\n"
+            exit 1
+        }
+
+        # Source the nix profile script
+        echo -e "Sourcing nix profile...\n"
+        {
+            . $HOME/.nix-profile/etc/profile.d/nix.sh 
+        } && echo -e "Nix sourced!\n" || {
+            echo -e "An error occurred while trying to source nix!\n"
+            exit 1
+        }
+    else
+        echo -e "Nix is already installed and sourced. Skipping installation and sourcing.\n"
+    fi
+
     # Create the configuration foldes (if not present)
     echo -e "Creating configuration folders...\n"
     mkdir -p $HOME/.config
@@ -163,7 +186,7 @@ elif [ "$ENV_TYPE" = "termux" ]; then
 
     # Remove the existing directory with configurations
     echo -e "Removing existing configurations...\n"
-    for dir in nushell nix nvim termux opencode; do
+    for dir in nushell nix nvim opencode; do
         rm -rf $HOME/.config/$dir
     done
 
@@ -172,20 +195,20 @@ elif [ "$ENV_TYPE" = "termux" ]; then
     ln -sf $PWD/starship/starship.toml $HOME/.config
     ln -sf $PWD/tmux/tmux.conf $HOME/.tmux.conf
     ln -sf $PWD/bashrc $HOME/.bashrc  
-    ln -sf $PWD/profile_termux $HOME/.profile
+    ln -sf $PWD/profile $HOME/.profile
     ln -sf $PWD/ssh/config $HOME/.ssh 
     ln -sf $PWD/agents/opencode $HOME/.config
     ln -sf $PWD/nvim $HOME/.config
     ln -sf $PWD/nix $HOME/.config
     ln -sf $PWD/nushell $HOME/.config
-    ln -sf $PWD/termux/ $HOME/.termux
+    ln -sf $PWD/termux/ /data/data/com.termux/files/home/.termux
 
     # Create the secrets files
     touch $HOME/.config/nushell/secrets.nu
 
-    # Run nix-on-droid
+    # Run home-manager
     echo -e "Downloading all packages and configuring the user ...\n"
-    nix-on-droid switch --flake $HOME/.config/nix#android
+    nix run home-manager/master -- switch --flake $HOME/.config/nix#termux
 
     # Manage tpm (Tmux Plugin Manager)
     TPM_DIR="$HOME/.tmux/plugins/tpm"

@@ -1,12 +1,12 @@
-{ lib, pkgs, username, ... }:
+{ pkgs, username, ... }:
 
 {
     # Import the common configurations
     imports = [ ../common-home.nix ];
 
     # Configurethe user
-    home.username = "nix-on-droid";
-    home.homeDirectory = "/data/data/com.termux.nix/files/home";
+    home.username = username;
+    home.homeDirectory = "/home/${username}";
 
     # List of pacckges for this system
     home.packages = with pkgs; [
